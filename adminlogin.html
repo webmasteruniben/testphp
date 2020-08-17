@@ -92,7 +92,7 @@
         $(document).on('click', '#sign_up', function(){
             // validate jwt to verify access
             var jwt = getCookie('jwt');
-            $.post("api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+            $.post("https://testphp.uniben.edu/api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
             var html = `
                 <h2>Register User</h2>
                 <form id='sign_up_form'>
@@ -140,7 +140,7 @@
 
         // submit form data to api
         $.ajax({
-            url: "api/user/create_user.php",
+            url: "https://testphp.uniben.edu/api/user/create_user.php",
             type : "POST",
             contentType : 'application/json',
             data : form_data,
@@ -333,7 +333,7 @@
         
         // validate jwt to verify access
         var jwt = getCookie('jwt');
-        $.post("api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+        $.post("https://testphp.uniben.edu/api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
 
             // home page html will be here
             // if valid, show homepage
@@ -391,7 +391,7 @@
         function showUpdateAccountForm(){
             // validate jwt to verify access
             var jwt = getCookie('jwt');
-            $.post("api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+            $.post("https://testphp.uniben.edu/api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
         
                 // html form for updating user account will be here
                 // if response is valid, put user details in the form
