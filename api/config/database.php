@@ -3,11 +3,12 @@ class Database{
   
     // specify your own database credentials
     private $host = "localhost:3306";
-    private $db_name = "online-voting";
+    private $db_name = "admin_test_data";
     private $username = "root";
     private $password = "Pa55w0rd@1";
     public $conn;
   
+    
     // get the database connection
     public function getConnection(){
   
