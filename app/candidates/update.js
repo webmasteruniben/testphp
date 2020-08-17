@@ -7,7 +7,7 @@ $(document).ready(function(){
         var id = $(this).attr('data-id');
         console.log(id)
         // read one record based on given product id
-        $.getJSON("http://localhost/online-voting/api/product/read_one.php?id=" + id, function(data){
+        $.getJSON("https://testphp.uniben.edu/api/product/read_one.php?id=" + id, function(data){
         
             // values will be used to fill out our form
             var name = data.name;
@@ -18,7 +18,7 @@ $(document).ready(function(){
             
             // load list of categories will be here
             // load list of categories
-            $.getJSON("http://localhost/online-voting/api/election/read.php", function(data){
+            $.getJSON("https://testphp.uniben.edu/api/election/read.php", function(data){
             
                 // build 'categories option' html
                 // loop through returned list of data
@@ -101,7 +101,7 @@ $(document).ready(function(){
         var form_data=JSON.stringify($(this).serializeObject());
         // submit form data to api
         $.ajax({
-            url: "http://localhost/online-voting/api/product/update.php",
+            url: "https://testphp.uniben.edu/api/product/update.php",
             type : "POST",
             contentType : 'application/json',
             data : form_data,

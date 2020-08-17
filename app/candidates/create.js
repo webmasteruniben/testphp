@@ -5,7 +5,7 @@ $(document).ready(function(){
         // categories api call will be here
         // load list of categories
         console.log('test')
-        $.getJSON("http://localhost/online-voting/api/election/read.php", function(data){
+        $.getJSON("https://testphp.uniben.edu/api/election/read.php", function(data){
             // build categories option html
         // loop through returned list of data
         var categories_options_html=`<select name='category_id' class='form-control'>`;
@@ -78,7 +78,7 @@ $(document).ready(function(){
         var form_data=JSON.stringify($(this).serializeObject());
         // submit form data to api
         $.ajax({
-            url: "http://localhost/online-voting/api/product/create.php",
+            url: "https://testphp.uniben.edu/api/product/create.php",
             type : "POST",
             contentType : 'application/json',
             data : form_data,

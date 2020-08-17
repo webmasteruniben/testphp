@@ -7,7 +7,7 @@ $(document).ready(function(){
         // get product id
         var id = $(this).attr('data-id');
         // read product record based on given ID
-        $.getJSON("http://localhost/online-voting/api/product/read_one.php?id=" + id, function(data){
+        $.getJSON("https://testphp.uniben.edu/api/product/read_one.php?id=" + id, function(data){
             // read products button will be here
             // start html
             var read_one_product_html=`
