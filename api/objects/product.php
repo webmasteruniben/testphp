@@ -28,7 +28,7 @@ function read(){
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
-                elections c
+                categories c
                         ON p.category_id = c.id
             ORDER BY
                 p.created DESC";
@@ -86,7 +86,7 @@ function readOne(){
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
-                elections c
+                categories c
                         ON p.category_id = c.id
             WHERE
                 p.id = ?
@@ -184,7 +184,7 @@ function search($keywords){
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
-                    elections c
+                categories c
                         ON p.category_id = c.id
             WHERE
                 p.name LIKE ? OR p.description LIKE ? OR c.name LIKE ?
@@ -218,7 +218,7 @@ public function readPaging($from_record_num, $records_per_page){
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
-                    elections c
+                categories c
                         ON p.category_id = c.id
             ORDER BY p.created DESC
             LIMIT ?, ?";
