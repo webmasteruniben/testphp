@@ -84,7 +84,7 @@ $(document).ready(function(){
             data : form_data,
             success : function(result) {
                 // product was created, go back to products list
-                showProducts();
+                showProductsFirstPage();
             },
             error: function(xhr, resp, text) {
                 // show error to console
