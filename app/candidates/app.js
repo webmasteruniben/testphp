@@ -1,4 +1,14 @@
 $(document).ready(function(){
+
+    //check token
+    var jwt = getCookie('jwt');
+    if(jwt){
+        console.log(jwt)
+    } else {
+        window.location = "http://testphp.uniben.edu/adminlogin.html";
+    }
+    
+    
  
     // app html
     var app_html=`
@@ -17,6 +27,25 @@ $(document).ready(function(){
     $("#app").html(app_html);
  
 });
+
+// getCookie() will be here
+        // get or read cookie
+        function getCookie(cname){
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' '){
+                    c = c.substring(1);
+                }
+        
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
  
 // change page title
 function changePageTitle(page_title){
