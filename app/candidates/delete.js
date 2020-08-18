@@ -5,7 +5,7 @@ $(document).ready(function(){
         // product id will be here
         // get the product id
         var product_id = $(this).attr('data-id');
-
+        console.log(product_id);
         // bootbox for good looking 'confirm pop up'
         bootbox.confirm({
         
