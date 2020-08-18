@@ -36,7 +36,7 @@ $(document).ready(function(){
                 // store 'update product' html to this variable
                 var update_product_html=`
                     <div id='read-products' class='btn btn-primary pull-right m-b-15px read-products-button'>
-                        <span class='glyphicon glyphicon-list'></span> Read Products
+                        <span class='glyphicon glyphicon-list'></span> View Candidates Info
                     </div>
                     <!-- build 'update product' html form -->
                     <!-- we used the 'required' html5 property to prevent empty fields -->
@@ -75,7 +75,7 @@ $(document).ready(function(){
                                 <!-- button to submit form -->
                                 <td>
                                     <button type='submit' class='btn btn-info'>
-                                        <span class='glyphicon glyphicon-edit'></span> Update Product
+                                        <span class='glyphicon glyphicon-edit'></span> Update Candidate
                                     </button>
                                 </td>
                     
@@ -107,7 +107,8 @@ $(document).ready(function(){
             data : form_data,
             success : function(result) {
                 // product was created, go back to products list
-                showProductsFirstPage();
+                window.location.href = window.location.href;
+                //showProductsFirstPage();
             },
             error: function(xhr, resp, text) {
                 // show error to console
