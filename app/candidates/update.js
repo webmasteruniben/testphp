@@ -107,7 +107,7 @@ $(document).ready(function(){
             data : form_data,
             success : function(result) {
                 // product was created, go back to products list
-                window.location.href = window.location.href;
+                location.reload(true);
                 //showProductsFirstPage();
             },
             error: function(xhr, resp, text) {
