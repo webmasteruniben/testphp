@@ -30,7 +30,22 @@ if($category->delete()){
     http_response_code(200);
   
     // tell the user
-    echo json_encode(array("message" => "Election was deleted."));
+    echo json_encode(array("message" => "Election Candidates were deleted."));
+    if($category->deleteelection()){
+        // set response code - 200 ok
+        http_response_code(200);
+    
+        // tell the user
+        echo json_encode(array("message" => "Election was deleted."));  
+    }// if unable to delete the product
+    else{
+    
+        // set response code - 503 service unavailable
+        http_response_code(503);
+    
+        // tell the user
+        echo json_encode(array("message" => "Unable to delete election."));
+    }
 }
   
 // if unable to delete the product
@@ -40,6 +55,6 @@ else{
     http_response_code(503);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to delete election."));
+    echo json_encode(array("message" => "Unable to delete election candidates."));
 }
 ?>

@@ -118,7 +118,7 @@ function delete() {
   
     // execute query
     if($stmt->execute()){
-        deleteelection();
+        return true;
     }
   
     return false;
