@@ -33,7 +33,8 @@ $(document).ready(function(){
                         success : function(result) {
                 
                             // re-load list of products
-                            showProductsFirstPage();
+                            location.reload(true);
+                            //showProductsFirstPage();
                         },
                         error: function(xhr, resp, text) {
                             console.log(xhr, resp, text);
