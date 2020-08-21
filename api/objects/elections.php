@@ -221,5 +221,38 @@ function search($keywords){
     return $stmt;
 }
 
+// update the product
+function update(){
+  
+    // update query
+    $query = "UPDATE
+                " . $this->table_name . "
+            SET
+                name = :name,
+                description = :description
+            WHERE
+                id = :id";
+  
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+  
+    // sanitize
+    $this->name=htmlspecialchars(strip_tags($this->name));
+    $this->description=htmlspecialchars(strip_tags($this->description));
+    $this->id=htmlspecialchars(strip_tags($this->id));
+  
+    // bind new values
+    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':description', $this->description);
+    $stmt->bindParam(':id', $this->id);
+  
+    // execute the query
+    if($stmt->execute()){
+        return true;
+    }
+  
+    return false;
+}
+
 }
 ?>
