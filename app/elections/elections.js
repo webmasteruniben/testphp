@@ -28,8 +28,7 @@ function readProductsTemplate(data, keywords){
             <!-- creating our table heading -->
             <tr>
                 <th class='w-25-pct'>Name</th>
-                <th class='w-10-pct'>Price</th>
-                <th class='w-15-pct'>Category</th>
+                <th class='w-10-pct'>Description</th>
                 <th class='w-25-pct text-align-center'>Action</th>
             </tr>`;
  
@@ -41,7 +40,7 @@ function readProductsTemplate(data, keywords){
         read_products_html+=`<tr>
  
             <td>` + val.name + `</td>
-            <td>$` + val.description + `</td>
+            <td>` + val.description + `</td>
  
             <!-- 'action' buttons -->
             <td>
