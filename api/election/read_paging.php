@@ -52,7 +52,7 @@ if($num>0){
   
     // include paging
     $total_rows=$category->count();
-    $page_url="{$home_url}elections/read_paging.php?";
+    $page_url="{$home_url}election/read_paging.php?";
     $paging=$utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
     $products_arr["paging"]=$paging;
   
