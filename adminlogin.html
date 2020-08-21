@@ -28,6 +28,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#" id='home'>Admin</a>
             <a class="nav-item nav-link" href="#" id='update_account'>Account</a>
+            <a class="nav-item nav-link" href="elections.html" id='elections'>Elections</a>
             <a class="nav-item nav-link" href="candidates.html" id='candidates'>Candidates</a>
             <a class="nav-item nav-link" href="#" id='logout'>Logout</a>
             <a class="nav-item nav-link" href="#" id='login'>Login</a>
@@ -72,11 +73,11 @@
         var jwt = getCookie('jwt');
         $.post("api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
             $("#login").hide();
-            $("#logout, #candidates, #sign_up").show();
+            $("#logout, #elections, #candidates, #sign_up").show();
         })
         .fail(function(result){
             $("#login").show();
-            $("#logout, #candidates, #sign_up").hide();
+            $("#logout, #elections, #candidates, #sign_up").hide();
         });
 
 
@@ -324,7 +325,7 @@
             // show login and sign up from navbar & hide logout button
             //$("#login, #sign_up").show();
             $("#login").show();
-            $("#logout, #candidates, #sign_up").hide();
+            $("#logout, #elections, #candidates, #sign_up").hide();
         }
         
         // showHomePage() function will be here
@@ -384,7 +385,7 @@
             // hide login and sign up from navbar & show logout button
             //$("#login, #sign_up").hide();
             $("#login").hide();
-            $("#logout, #candidates, #sign_up").show();
+            $("#logout, #elections, #candidates, #sign_up").show();
         }
         
         // showUpdateAccountForm() will be here

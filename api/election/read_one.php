@@ -29,7 +29,6 @@ if($category->name!=null){
         "id" =>  $category->id,
         "name" => $category->name,
         "description" => $category->description
-  
     );
   
     // set response code - 200 OK
