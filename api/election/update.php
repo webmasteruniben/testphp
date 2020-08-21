@@ -28,6 +28,7 @@ $category->name = $data->name;
 
 $category->description = $data->description;
 
+echo json_encode(array("message" => "Election is updating."));
   
 // update the product
 if($category->update()){

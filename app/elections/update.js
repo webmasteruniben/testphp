@@ -62,7 +62,7 @@ $(document).ready(function(){
                     $("#page-content").html(update_product_html);
                     
                     // chage page title
-                    changePageTitle("Update Product");
+                    changePageTitle("Update Election");
             
         });
     });
