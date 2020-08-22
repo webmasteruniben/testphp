@@ -213,7 +213,7 @@ function search($keywords){
     // bind
     $stmt->bindParam(1, $keywords);
     $stmt->bindParam(2, $keywords);
-    $stmt->bindParam(3, $keywords);
+    //$stmt->bindParam(3, $keywords);
   
     // execute query
     $stmt->execute();
