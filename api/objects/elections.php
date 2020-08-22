@@ -195,7 +195,7 @@ function search($keywords){
   
     // select all query
     $query = "SELECT
-                name,id, description, p.created
+                name,id, description, created
             FROM
                 " . $this->table_name . " 
             WHERE

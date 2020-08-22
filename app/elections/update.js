@@ -82,8 +82,8 @@ $(document).ready(function(){
             data : form_data,
             success : function(result) {
                 // product was created, go back to products list
-                location.reload(true);
-                //showProductsFirstPage();
+                //location.reload(true);
+                showProductsFirstPage();
             },
             error: function(xhr, resp, text) {
                 // show error to console
