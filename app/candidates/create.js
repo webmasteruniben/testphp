@@ -34,8 +34,8 @@ $(document).ready(function(){
             
                     <!-- price field -->
                     <tr>
-                        <td>Price</td>
-                        <td><input type='number' min='1' name='price' class='form-control' required /></td>
+                        <td>Position</td>
+                        <td><input type='text' min='1' name='price' class='form-control' required /></td>
                     </tr>
             
                     <!-- description field -->
