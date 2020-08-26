@@ -14,7 +14,7 @@ $(document).ready(function(){
             
                 <!-- when clicked, it will show the product's list -->
                 <div id='read-products' class='btn btn-primary pull-right m-b-15px read-products-button'>
-                    <span class='glyphicon glyphicon-list'></span> Read Elections
+                    <span class='glyphicon glyphicon-list'></span> Read Voters
                 </div>
                 <!-- product data will be shown in this table -->
                 <table class='table table-bordered table-hover'>
@@ -38,6 +38,11 @@ $(document).ready(function(){
                     <tr>
                         <td class='w-30-pct'>Email</td>
                         <td class='w-70-pct'>` + data.email + `</td>
+                    </tr>
+
+                    <tr>
+                        <td class='w-30-pct'>Level</td>
+                        <td class='w-70-pct'>` + data.level + `</td>
                     </tr>
 
                     <tr>

@@ -32,12 +32,17 @@ $(document).ready(function(){
 
                     <tr>
                         <td>Middle Name</td>
-                        <td><input type='text' name='middlename' class='form-control' required /></td>
+                        <td><input type='text' name='middlename' class='form-control' /></td>
                     </tr>
 
                     <tr>
                         <td>Email</td>
                         <td><input type='text' name='email' class='form-control' required /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Level</td>
+                        <td><input type='text' name='level' class='form-control' required /></td>
                     </tr>
 
                     <tr>

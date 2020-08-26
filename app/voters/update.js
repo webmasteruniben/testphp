@@ -10,9 +10,19 @@ $(document).ready(function(){
         $.getJSON("https://testphp.uniben.edu/api/voter/read_one.php?id=" + id, function(data){
         
             // values will be used to fill out our form
-            var name = data.name;
-           
-            var description = data.description;
+            var lastname = data.lastname;
+            var id = data.id;
+            var firstname = data.firstname;
+            var middlename = data.middlename;
+            var email = data.email;
+            var level = data.level;
+            var faculty = data.faculty;
+            var department = data.department;
+            var code = data.code;
+            var number = data.number;
+            var status = data.status;
+            var category = data.category;
+
             
             
             
@@ -46,6 +56,11 @@ $(document).ready(function(){
                             <tr>
                                 <td>Email</td>
                                 <td><input value=\"` + email + `\" type='text' name='email' class='form-control' required /></td>
+                            </tr>
+
+                            <tr>
+                                <td>Level</td>
+                                <td><input value=\"` + level + `\" type='text' name='level' class='form-control' /></td>
                             </tr>
 
                             <tr>
