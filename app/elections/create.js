@@ -39,7 +39,7 @@ $(document).ready(function(){
                         <td></td>
                         <td>
                             <button type='submit' class='btn btn-primary'>
-                                <span class='glyphicon glyphicon-plus'></span> Create Product
+                                <span class='glyphicon glyphicon-plus'></span> Create Election
                             </button>
                         </td>
                     </tr>

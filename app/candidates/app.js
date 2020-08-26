@@ -3,7 +3,7 @@ $(document).ready(function(){
     //check token
     var jwt = getCookie('jwt');
     if(jwt){
-        console.log('Welcome to Online Voting - 2020')
+        console.log('Welcome to UNIBEN Online Voting - 2020')
     } else {
         window.location = "http://testphp.uniben.edu/adminlogin.html";
     }
