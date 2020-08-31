@@ -8,7 +8,7 @@ $(document).ready(function(){
         $.getJSON("https://testphp.uniben.edu/api/election/read.php", function(data){
             // build categories option html
         // loop through returned list of data
-        var categories_options_html=`<select name='category_id' class='form-control' style='height:100px'>`;
+        var categories_options_html=`<select name='category_id' class='form-control' style='height:40px'>`;
         $.each(data.records, function(key, val){
             categories_options_html+=`<option value='` + val.id + `'>` + val.name + `</option>`;
         });
@@ -35,7 +35,11 @@ $(document).ready(function(){
                     <!-- price field -->
                     <tr>
                         <td>Position</td>
-                        <td><input type='text' min='1' name='price' class='form-control' required /></td>
+                        <td><select name='price' class='form-control' style='height:40px'>
+                            <option value='President'>President</option>
+                            <option value='Vice-President'>Vice-President</option>
+                            <option value='Dean'>Dean</option>
+                        </select></td>
                     </tr>
             
                     <!-- description field -->
