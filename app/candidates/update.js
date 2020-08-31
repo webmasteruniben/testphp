@@ -52,7 +52,11 @@ $(document).ready(function(){
                             <!-- price field -->
                             <tr>
                                 <td>Price</td>
-                                <td><input value=\"` + price + `\" type='number' min='1' name='price' class='form-control' required /></td>
+                                <td><select name='price' class='form-control' style='height:40px'>
+                                    <option value='President'>President</option>
+                                    <option value='Vice-President'>Vice-President</option>
+                                    <option value='Dean'>Dean</option>
+                                </select></td>
                             </tr>
                     
                             <!-- description field -->
@@ -87,7 +91,7 @@ $(document).ready(function(){
                     $("#page-content").html(update_product_html);
                     
                     // chage page title
-                    changePageTitle("Update Product");
+                    changePageTitle("Update Candidate");
             });
         });
     });
