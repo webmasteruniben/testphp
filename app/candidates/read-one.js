@@ -27,7 +27,7 @@ $(document).ready(function(){
                 
                     <!-- product price -->
                     <tr>
-                        <td>Price</td>
+                        <td>Position</td>
                         <td>` + data.price + `</td>
                     </tr>
                 

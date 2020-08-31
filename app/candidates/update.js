@@ -22,7 +22,7 @@ $(document).ready(function(){
             
                 // build 'categories option' html
                 // loop through returned list of data
-                    var categories_options_html=`<select name='category_id' class='form-control'>`;
+                    var categories_options_html=`<select name='category_id' class='form-control' style='height:40px'>`;
             
                     $.each(data.records, function(key, val){
                         // pre-select option is category id is the same
@@ -51,7 +51,7 @@ $(document).ready(function(){
                     
                             <!-- price field -->
                             <tr>
-                                <td>Price</td>
+                                <td>Position</td>
                                 <td><select name='price' class='form-control' style='height:40px'>
                                     <option value='President'>President</option>
                                     <option value='Vice-President'>Vice-President</option>
