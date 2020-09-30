@@ -138,7 +138,6 @@ function emailExists(){
         $this->number = $row['number'];
         $this->code = $row['code'];
         $this->status = $row['status'];
-        $this->level = $row['level'];
         $this->password = $row['password'];
  
         // return true because email exists in the database
