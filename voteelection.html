@@ -96,8 +96,8 @@
 
         $(document).on('click', '#sign_up', function(){
             // validate jwt to verify access
-            var jwt = getCookie('jwt');
-            $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+            //var jwt = getCookie('jwt');
+           // $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
             var html = `
                 <h2>Register Voter</h2>
                 <form id='sign_up_form'>
@@ -185,11 +185,11 @@
      
             clearResponse();
             $('#content').html(html);
-            })
-            .fail(function(result){
-            showLoginPage();
-            $('#response').html("<div class='alert alert-danger'>Please register a new voter account.</div>");
-        });
+            //})//
+          //  .fail(function(result){
+          //  showLoginPage();
+           // $('#response').html("<div class='alert alert-danger'>Please register a new voter account.</div>");
+        //});
 
         });
      
