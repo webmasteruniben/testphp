@@ -9,7 +9,9 @@ class Category{
     public $id;
     public $name;
     public $description;
+    public $status;
     public $created;
+
   
     public function __construct($db){
         $this->conn = $db;
@@ -19,7 +21,7 @@ class Category{
     public function readAll(){
         //select all data
         $query = "SELECT
-                    id, name, description
+                    id, name, description, status
                 FROM
                     " . $this->table_name . "
                 ORDER BY
@@ -36,9 +38,28 @@ public function read(){
   
     //select all data
     $query = "SELECT
-                id, name, description
+                id, name, description, status
             FROM
                 " . $this->table_name . "
+            ORDER BY
+                name";
+  
+    $stmt = $this->conn->prepare( $query );
+    $stmt->execute();
+  
+    return $stmt;
+}
+
+// used by select drop-down list
+public function readstatus(){
+  
+    //select all data
+    $query = "SELECT
+                id, name, description, status
+            FROM
+                " . $this->table_name . "
+            WHERE
+                status='OPEN'
             ORDER BY
                 name";
   
@@ -56,7 +77,7 @@ function create(){
     $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                name=:name, description=:description, created=:created";
+                name=:name, description=:description, status=:status, created=:created";
   
     // prepare query
     $stmt = $this->conn->prepare($query);
@@ -64,11 +85,13 @@ function create(){
     // sanitize
     $this->name=htmlspecialchars(strip_tags($this->name));
     $this->description=htmlspecialchars(strip_tags($this->description));
+    $this->status=htmlspecialchars(strip_tags($this->status));
     $this->created=htmlspecialchars(strip_tags($this->created));
   
     // bind values
     $stmt->bindParam(":name", $this->name);
     $stmt->bindParam(":description", $this->description);
+    $stmt->bindParam(":status", $this->status);
     $stmt->bindParam(":created", $this->created);
   
     // execute query
@@ -129,7 +152,7 @@ function readOne(){
   
     // query to read single record
     $query = "SELECT
-                name, description
+                name, description, status
             FROM
                 " . $this->table_name . " 
             WHERE
@@ -152,6 +175,7 @@ function readOne(){
     // set values to object properties
     $this->name = $row['name'];
     $this->description = $row['description'];
+    $this->status = $row['status'];
 }
 
 // read products with pagination
@@ -159,7 +183,7 @@ public function readPaging($from_record_num, $records_per_page){
   
     // select query
     $query = "SELECT
-                name, id, description, created
+                name, id, description, status, created
             FROM
                 " . $this->table_name . " 
             ORDER BY created DESC
@@ -195,7 +219,7 @@ function search($keywords){
   
     // select all query
     $query = "SELECT
-                name,id, description, created
+                name,id, description, status, created
             FROM
                 " . $this->table_name . " 
             WHERE
@@ -239,11 +263,45 @@ function update(){
     // sanitize
     $this->name=htmlspecialchars(strip_tags($this->name));
     $this->description=htmlspecialchars(strip_tags($this->description));
+    $this->status=htmlspecialchars(strip_tags($this->status));
     $this->id=htmlspecialchars(strip_tags($this->id));
   
     // bind new values
     $stmt->bindParam(':name', $this->name);
     $stmt->bindParam(':description', $this->description);
+    $stmt->bindParam(':status', $this->status);
+    $stmt->bindParam(':id', $this->id);
+  
+    // execute the query
+    if($stmt->execute()){
+        return true;
+    }
+  
+    return false;
+}
+
+// update the product
+function updatestatus(){
+  
+    // update query
+    $query = "UPDATE
+                " . $this->table_name . "
+            SET
+                status = :status
+            WHERE
+                id = :id";
+  
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+  
+    // sanitize
+
+    $this->status=htmlspecialchars(strip_tags($this->status));
+    $this->id=htmlspecialchars(strip_tags($this->id));
+  
+    // bind new values
+ 
+    $stmt->bindParam(':status', $this->status);
     $stmt->bindParam(':id', $this->id);
   
     // execute the query

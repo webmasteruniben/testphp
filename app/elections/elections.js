@@ -41,7 +41,8 @@ function readProductsTemplate(data, keywords){
  
             <td>` + val.name + `</td>
             <td>` + val.description + `</td>
- 
+            <td>` + val.status + `</td>
+
             <!-- 'action' buttons -->
             <td>
                 <!-- read product button -->
@@ -52,6 +53,11 @@ function readProductsTemplate(data, keywords){
                 <!-- edit button -->
                 <button class='btn btn-info m-r-10px update-product-button' data-id='` + val.id + `'>
                     <span class='glyphicon glyphicon-edit'></span> Edit
+                </button>
+
+                <!-- update status button -->
+                <button class='btn btn-primary m-r-10px update-status-button' data-id='` + val.id + `'>
+                    <span class='glyphicon glyphicon-eye-open'></span> Update Status
                 </button>
  
                 <!-- delete button -->

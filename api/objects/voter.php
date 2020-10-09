@@ -18,6 +18,7 @@ class Voter{
     public $department;
     public $faculty;
     public $category;
+    public $election;
     public $number;
     public $email;
     public $code;
@@ -41,6 +42,7 @@ function create(){
                 department = :department,
                 faculty = :faculty,
                 category = :category,
+                election = :election,
                 number = :number,
                 email = :email,
                 code = :code,
@@ -60,6 +62,7 @@ function create(){
     $this->department=htmlspecialchars(strip_tags($this->department));
     $this->faculty=htmlspecialchars(strip_tags($this->faculty));
     $this->category=htmlspecialchars(strip_tags($this->category));
+    $this->election=htmlspecialchars(strip_tags($this->election));
     $this->number=htmlspecialchars(strip_tags($this->number));
     $this->code=htmlspecialchars(strip_tags($this->code));
     $this->status=htmlspecialchars(strip_tags($this->status));
@@ -75,6 +78,7 @@ function create(){
     $stmt->bindParam(':department', $this->department);
     $stmt->bindParam(':faculty', $this->faculty);
     $stmt->bindParam(':category', $this->category);
+    $stmt->bindParam(':election', $this->election);
     $stmt->bindParam(':number', $this->number);
     $stmt->bindParam(':code', $this->code);
     $stmt->bindParam(':status', $this->status);
@@ -99,7 +103,7 @@ function create(){
 function emailExists(){
  
     // query to check if email exists
-    $query = "SELECT id, firstname, lastname, middlename, email, level, department, faculty, category, number, code, status, password
+    $query = "SELECT id, firstname, lastname, middlename, email, level, department, faculty, category, election, number, code, status, password
             FROM " . $this->table_name . "
             WHERE email = ?
             LIMIT 0,1";
@@ -135,6 +139,7 @@ function emailExists(){
         $this->department = $row['department'];
         $this->faculty = $row['faculty'];
         $this->category = $row['category'];
+        $this->election = $row['election'];
         $this->number = $row['number'];
         $this->code = $row['code'];
         $this->status = $row['status'];
@@ -165,6 +170,7 @@ public function update(){
                 department = :department,
                 faculty = :faculty,
                 category = :category,
+                election = :election,
                 number = :number,
                 email = :email,
                 code = :code,
@@ -184,6 +190,7 @@ public function update(){
     $this->department=htmlspecialchars(strip_tags($this->department));
     $this->faculty=htmlspecialchars(strip_tags($this->faculty));
     $this->category=htmlspecialchars(strip_tags($this->category));
+    $this->election=htmlspecialchars(strip_tags($this->election));
     $this->number=htmlspecialchars(strip_tags($this->number));
     $this->email=htmlspecialchars(strip_tags($this->email));
     $this->code=htmlspecialchars(strip_tags($this->code));
@@ -199,6 +206,7 @@ public function update(){
     $stmt->bindParam(':department', $this->department);
     $stmt->bindParam(':faculty', $this->faculty);
     $stmt->bindParam(':category', $this->category);
+    $stmt->bindParam(':election', $this->election);
     $stmt->bindParam(':number', $this->number);
     $stmt->bindParam(':code', $this->code);
     $stmt->bindParam(':status', $this->status);
@@ -262,7 +270,7 @@ function read(){
   
     // select all query
     $query = "SELECT
-                firstname, lastname, middlename, email, department, faculty, level, number, code, category, created, id, status
+                firstname, lastname, middlename, email, department, faculty, level, number, code, category, election, created, id, status
             FROM
                 " . $this->table_name . " 
             ORDER BY
@@ -282,7 +290,7 @@ function readOne(){
   
     // query to read single record
     $query = "SELECT
-                firstname, lastname, middlename, email, department, faculty, level, number, code, category, created, id, status
+                firstname, lastname, middlename, email, department, faculty, level, number, code, category, election, created, id, status
             FROM
                 " . $this->table_name . " 
             WHERE
@@ -313,6 +321,7 @@ function readOne(){
     $this->number = $row['number'];
     $this->code = $row['code'];
     $this->category = $row['category'];
+    $this->election = $row['election'];
     $this->created = $row['created'];
     $this->status = $row['status'];
 }
@@ -345,11 +354,11 @@ function search($keywords){
   
     // select all query
     $query = "SELECT
-                firstname, lastname, middlename, email, department, faculty, level, number, code, category, created, id, status
+                firstname, lastname, middlename, email, department, faculty, level, number, code, category, election, created, id, status
             FROM
                 " . $this->table_name . " 
             WHERE
-            firstname LIKE ? OR lastname LIKE ? OR faculty LIKE ? OR level LIKE ? OR category LIKE ?
+            firstname LIKE ? OR lastname LIKE ? OR faculty LIKE ? OR level LIKE ? OR category LIKE ? OR election LIKE ?
             ORDER BY
                 created DESC";
   
@@ -366,6 +375,7 @@ function search($keywords){
     $stmt->bindParam(3, $keywords);
     $stmt->bindParam(4, $keywords);
     $stmt->bindParam(5, $keywords);
+    $stmt->bindParam(6, $keywords);
   
     // execute query
     $stmt->execute();
@@ -378,7 +388,7 @@ public function readPaging($from_record_num, $records_per_page){
   
     // select query
     $query = "SELECT
-                firstname, lastname, middlename, email, department, faculty, level, number, code, category, created, id, status
+                firstname, lastname, middlename, email, department, faculty, level, number, code, category, election, created, id, status
             FROM
                 " . $this->table_name . " 
             ORDER BY created DESC

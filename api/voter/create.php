@@ -33,6 +33,7 @@ $voter->level = $data->level;
 $voter->number = $data->number;
 $voter->code = $data->code;
 $voter->category = $data->category;
+$voter->election = $data->election;
 $voter->password = $data->password;
 $voter->status = $data->status;
 $voter->created = date('Y-m-d H:i:s');

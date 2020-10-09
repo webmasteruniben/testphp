@@ -50,7 +50,7 @@ $(document).ready(function(){
             
                     <!-- categories 'select' field -->
                     <tr>
-                        <td>Category</td>
+                        <td>Election</td>
                         <td>` + categories_options_html + `</td>
                     </tr>
             

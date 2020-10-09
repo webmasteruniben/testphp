@@ -49,6 +49,7 @@ if($num>0){
             "number" => $number,
             "created" => $created,
             "category" => $category,
+            "election" => $election,
             "status" => $status
         );
   

@@ -32,6 +32,12 @@ $(document).ready(function(){
                         <td>Description</td>
                         <td>` + data.description + `</td>
                     </tr>
+
+                    <!-- product description -->
+                    <tr>
+                        <td>Description</td>
+                        <td>` + data.status + `</td>
+                    </tr>
                 
                 
                 </table>`;

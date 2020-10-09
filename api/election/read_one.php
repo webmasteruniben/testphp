@@ -28,7 +28,8 @@ if($category->name!=null){
     $product_arr = array(
         "id" =>  $category->id,
         "name" => $category->name,
-        "description" => $category->description
+        "description" => $category->description,
+        "status" => $category->status
     );
   
     // set response code - 200 OK

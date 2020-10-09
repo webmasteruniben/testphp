@@ -37,7 +37,8 @@ if($num>0){
         $category_item=array(
             "id" => $id,
             "name" => $name,
-            "description" => html_entity_decode($description)
+            "description" => html_entity_decode($description),
+            "status" => $status
         );
   
         array_push($categories_arr["records"], $category_item);

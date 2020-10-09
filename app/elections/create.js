@@ -31,6 +31,16 @@ $(document).ready(function(){
                         <td>Description</td>
                         <td><textarea name='description' class='form-control' required></textarea></td>
                     </tr>
+
+                    <!-- status field -->
+                    <tr>
+                        <td>Name</td>
+                        <td><select name='status' class='form-control'>
+                                <option value='Closed'>Closed</option>
+                                <option value='Open'>Open</option>
+                            </select>
+                        </td>
+                    </tr>
             
                     
             

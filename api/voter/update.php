@@ -72,10 +72,10 @@ if($jwt){
                 "iat" => $iat,
                 "nbf" => $nbf,
                 "data" => array(
-                    "id" => $user->id,
-                    "firstname" => $user->firstname,
-                    "lastname" => $user->lastname,
-                    "email" => $user->email,
+                    "id" => $voter->id,
+                    "firstname" => $voter->firstname,
+                    "lastname" => $voter->lastname,
+                    "email" => $voter->email,
                     "middlename" => $voter->middlename,
                     "level" => $voter->level,
                     "department" => $voter->department,
@@ -83,6 +83,7 @@ if($jwt){
                     "number" => $voter->number,
                     "code" => $voter->code,
                     "category" => $voter->category,
+                    "election" => $voter->election,
                     "status" => $voter->status
                 )
             );

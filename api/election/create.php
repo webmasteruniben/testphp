@@ -29,6 +29,7 @@ if(
     // set product property values
     $category->name = $data->name;
     $category->description = $data->description;
+    $category->status = $data->status;
     $category->created = date('Y-m-d H:i:s');
   
     // create the product

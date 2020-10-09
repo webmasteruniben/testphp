@@ -24,22 +24,20 @@ $data = json_decode(file_get_contents("php://input"));
 $category->id = $data->id;
   
 // set product property values
-$category->name = $data->name;
 
-$category->description = $data->description;
 
 $category->status = $data->status;
 
-echo json_encode(array("message" => "Election is updating."));
+echo json_encode(array("message" => "Election Status is updating."));
   
 // update the product
-if($category->update()){
+if($category->updatestatus()){
   
     // set response code - 200 ok
     http_response_code(200);
   
     // tell the user
-    echo json_encode(array("message" => "Election was updated."));
+    echo json_encode(array("message" => "Election Status was updated."));
 }
   
 // if unable to update the product, tell the user
@@ -49,6 +47,6 @@ else{
     http_response_code(503);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to update election."));
+    echo json_encode(array("message" => "Unable to update election status."));
 }
 ?>
