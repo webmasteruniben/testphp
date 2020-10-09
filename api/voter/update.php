@@ -63,7 +63,7 @@ if($jwt){
         
         // update user will be here
         // update the user record
-        if($user->update()){
+        if($voter->update()){
             // regenerate jwt will be here
             // we need to re-generate jwt because user details might be different
             $token = array(
@@ -95,7 +95,7 @@ if($jwt){
             // response in json format
             echo json_encode(
                     array(
-                        "message" => "User was updated.",
+                        "message" => "Voter was updated.",
                         "jwt" => $jwt
                     )
                 );
@@ -107,7 +107,7 @@ if($jwt){
             http_response_code(401);
         
             // show error message
-            echo json_encode(array("message" => "Unable to update user."));
+            echo json_encode(array("message" => "Unable to update Voter."));
         }
     }
  
