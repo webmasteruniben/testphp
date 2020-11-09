@@ -100,7 +100,11 @@ $(document).ready(function(){
                                 </select></td>
                             </tr>
                     
-                           
+                           <tr>
+                                <td>JWT</td>
+                                <td><textarea name='jwt' class='form-control' rows='10'>\"` + jwt + `\"
+                                </textarea></td>
+                            </tr>
                     
                             
                     
