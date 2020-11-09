@@ -100,11 +100,7 @@ $(document).ready(function(){
                                 </select></td>
                             </tr>
                     
-                           <tr>
-                                <td>JWT</td>
-                                <td><textarea name='jwt' class='form-control' rows='10'>\"` + jwt + `\"
-                                </textarea></td>
-                            </tr>
+                           
                     
                             
                     
@@ -112,9 +108,10 @@ $(document).ready(function(){
                             <tr>
                     
                                 <!-- hidden 'product id' to identify which record to delete -->
-                                <td><input value=\"` + id + `\" name='id' type='hidden' /></td>
+                                <td><input value=\"` + id + `\" name='id' type='hidden' /><br>
+                                    <input value=\"` + jwt + `\" name='jwt' type='hidden' />
+                                </td>
 
-                                <td><input value=\"` + jwt + `\" name='jwt' type='hidden' /></td>
                     
                                 <!-- button to submit form -->
                                 <td>
