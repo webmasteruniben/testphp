@@ -93,7 +93,7 @@ $(document).ready(function(){
 
                             <tr>
                                 <td>Status</td>
-                                <td><select name='status' class='form-control' height='100px'>
+                                <td><select name='status' class='form-control' height='150px'>
                                     <option value='Not Accredited'>Not Accredited</option>
                                     <option value='Accredited'>Accredited</option>
                                 </select></td>
