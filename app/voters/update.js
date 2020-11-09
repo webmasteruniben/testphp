@@ -6,6 +6,7 @@ $(document).ready(function(){
         // get product id
         var id = $(this).attr('data-id');
         console.log(id)
+        var jwt = getCookie('jwt');
         // read one record based on given product id
         $.getJSON("https://testphp.uniben.edu/api/voter/read_one.php?id=" + id, function(data){
         
@@ -108,6 +109,8 @@ $(document).ready(function(){
                     
                                 <!-- hidden 'product id' to identify which record to delete -->
                                 <td><input value=\"` + id + `\" name='id' type='hidden' /></td>
+
+                                <td><input value=\"` + jwt + `\" name='jwt' type='hidden' /></td>
                     
                                 <!-- button to submit form -->
                                 <td>
