@@ -174,8 +174,7 @@ public function update(){
                 number = :number,
                 email = :email,
                 code = :code,
-                status = :status,
-                created = :created
+                status = :status
                 {$password_set}
             WHERE id = :id";
  
@@ -195,7 +194,7 @@ public function update(){
     $this->email=htmlspecialchars(strip_tags($this->email));
     $this->code=htmlspecialchars(strip_tags($this->code));
     $this->status=htmlspecialchars(strip_tags($this->status));
-    $this->created=htmlspecialchars(strip_tags($this->created));
+    //$this->created=htmlspecialchars(strip_tags($this->created));
  
     // bind the values from the form
     $stmt->bindParam(':firstname', $this->firstname);
@@ -210,7 +209,7 @@ public function update(){
     $stmt->bindParam(':number', $this->number);
     $stmt->bindParam(':code', $this->code);
     $stmt->bindParam(':status', $this->status);
-    $stmt->bindParam(':created', $this->created);
+    //$stmt->bindParam(':created', $this->created);
     
  
     // hash the password before saving to database
