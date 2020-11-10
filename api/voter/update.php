@@ -49,7 +49,7 @@ $data = json_decode(file_get_contents("php://input"));
         $voter->firstname = $data->firstname;
         $voter->lastname = $data->lastname;
         $voter->email = $data->email;
-        $voter->password = $data->password;
+        //$voter->password = $data->password;
         $voter->middlename = $data->middlename;
         $voter->department = $data->department;
         $voter->faculty = $data->faculty;
@@ -58,7 +58,7 @@ $data = json_decode(file_get_contents("php://input"));
         $voter->code = $data->code;
         $voter->category = $data->category;
         $voter->status = $data->status;
-        $voter->created = $data->created;
+        //$voter->created = $data->created;
         $voter->id = $decoded->data->id;
         
         // update user will be here
