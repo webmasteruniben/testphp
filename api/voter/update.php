@@ -32,11 +32,11 @@ $voter = new Voter($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // get jwt
-$jwt=isset($data->jwt) ? $data->jwt : "";
+//$jwt=isset($data->jwt) ? $data->jwt : "";
  
 // decode jwt here
 // if jwt is not empty
-if($jwt){
+
  
     // if decode succeed, show user details
     try {
@@ -66,28 +66,8 @@ if($jwt){
         if($voter->update()){
             // regenerate jwt will be here
             // we need to re-generate jwt because user details might be different
-            $token = array(
-                "iss" => $iss,
-                "aud" => $aud,
-                "iat" => $iat,
-                "nbf" => $nbf,
-                "data" => array(
-                    "id" => $voter->id,
-                    "firstname" => $voter->firstname,
-                    "lastname" => $voter->lastname,
-                    "email" => $voter->email,
-                    "middlename" => $voter->middlename,
-                    "level" => $voter->level,
-                    "department" => $voter->department,
-                    "faculty" => $voter->faculty,
-                    "number" => $voter->number,
-                    "code" => $voter->code,
-                    "category" => $voter->category,
-                    "election" => $voter->election,
-                    "status" => $voter->status
-                )
-            );
-            $jwt = JWT::encode($token, $key);
+           
+            //$jwt = JWT::encode($token, $key);
             
             // set response code
             http_response_code(200);
@@ -124,16 +104,5 @@ if($jwt){
             "error" => $e->getMessage()
         ));
     }
-}
- 
-// error message if jwt is empty will be here
-// show error message if jwt is empty
-else{
- 
-    // set response code
-    http_response_code(401);
- 
-    // tell the user access denied
-    echo json_encode(array("message" => "Access denied."));
-}
+
 ?>
