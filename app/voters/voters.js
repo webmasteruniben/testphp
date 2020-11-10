@@ -56,6 +56,11 @@ function readProductsTemplate(data, keywords){
                 <button class='btn btn-primary m-r-10px accredit-product-button' data-id='` + val.id + `'>
                     <span class='glyphicon glyphicon-eye-open'></span> Accredit
                 </button>
+
+                <!-- disaccredit product button -->
+                <button class='btn btn-primary m-r-10px disaccredit-product-button' data-id='` + val.id + `'>
+                    <span class='glyphicon glyphicon-eye-open'></span> Disaccredit
+                </button>
  
                 <!-- edit button -->
                 <button class='btn btn-info m-r-10px update-product-button' data-id='` + val.id + `'>
