@@ -42,7 +42,7 @@ $data = json_decode(file_get_contents("php://input"));
     try {
  
         // decode jwt
-        $decoded = JWT::decode($jwt, $key, array('HS256'));
+        //$decoded = JWT::decode($jwt, $key, array('HS256'));
  
         // set user property values here
         // set user property values
@@ -71,12 +71,12 @@ $data = json_decode(file_get_contents("php://input"));
             
             // set response code
             http_response_code(200);
+
             
             // response in json format
             echo json_encode(
                     array(
-                        "message" => "Voter was updated.",
-                        "jwt" => $jwt
+                        "message" => "Voter was updated."
                     )
                 );
         }
