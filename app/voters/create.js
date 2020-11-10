@@ -76,8 +76,8 @@ $(document).ready(function(){
                     <tr>
                         <td>Status</td>
                         <td><select name='status' class='form-control' height='100px'>
-                            <option value='Not Accredited'>Not Accredited</option>
-                            <option value='Accredited'>Accredited</option>
+                            <option value='Not Accredited'>NOT ACCREDITTED</option>
+                            <option value='Accredited'>ACCREDITTED</option>
                         </select></td>
                     </tr>
             
