@@ -59,7 +59,7 @@ $data = json_decode(file_get_contents("php://input"));
         $voter->category = $data->category;
         $voter->status = $data->status;
         //$voter->created = $data->created;
-        //$voter->id = $decoded->data->id;
+        $voter->id = $data->id;
         
         // update user will be here
         // update the user record
