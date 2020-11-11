@@ -5,7 +5,14 @@ $(document).ready(function(){
         // categories api call will be here
         // load list of categories
         console.log('test')
-        
+        $.getJSON("https://testphp.uniben.edu/api/election/read.php", function(data){
+            // build categories option html
+        // loop through returned list of data
+        var categories_options_html=`<select name='election' class='form-control' style='height:60px'>`;
+        $.each(data.records, function(key, val){
+            categories_options_html+=`<option value='` + val.name + `'>` + val.name + `</option>`;
+        });
+        categories_options_html+=`</select>`;
 
         // we have our html form here where product information will be entered
         // we used the 'required' html5 property to prevent empty fields
@@ -67,11 +74,19 @@ $(document).ready(function(){
 
                     <tr>
                         <td>Category</td>
-                        <td><select name='category' class='form-control' height='100px'>
+                        <td><select name='category' class='form-control' style='height:100px'>
                             <option value='Staff'>Staff</option>
                             <option value='Student'>Student</option>
                         </select></td>
                     </tr>
+
+                    <!-- categories 'select' field -->
+                    <tr>
+                        <td>Election</td>
+                        <td>` + categories_options_html + `</td>
+                    </tr>
+
+
 
                     <tr>
                         <td>Status</td>
@@ -107,7 +122,7 @@ $(document).ready(function(){
             
             // chage page title
             changePageTitle("Create Voter");
-        
+        });
     });
  
     // 'create product form' handle will be here

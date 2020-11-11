@@ -6,7 +6,14 @@ $(document).ready(function(){
         // get product id
         var id = $(this).attr('data-id');
         console.log(id)
-        var jwt = getCookie('jwt');
+         $.getJSON("https://testphp.uniben.edu/api/election/read.php", function(data){
+            // build categories option html
+        // loop through returned list of data
+        var categories_options_html=`<select name='election' class='form-control' style='height:60px'>`;
+        $.each(data.records, function(key, val){
+            categories_options_html+=`<option value='` + val.name + `'>` + val.name + `</option>`;
+        });
+        categories_options_html+=`</select>`;
         // read one record based on given product id
         $.getJSON("https://testphp.uniben.edu/api/voter/read_one.php?id=" + id, function(data){
         
@@ -23,6 +30,7 @@ $(document).ready(function(){
             var number = data.number;
             var status = data.status;
             var category = data.category;
+            var election = data.election;
 
             
             
@@ -86,15 +94,21 @@ $(document).ready(function(){
 
                             <tr>
                                 <td>Category</td>
-                                <td><select name='category' class='form-control' height='100px'>
+                                <td><select name='category' class='form-control' style='height:60px'>
                                     <option value='Staff'>Staff</option>
                                     <option value='Student'>Student</option>
                                 </select></td>
                             </tr>
 
+                            <!-- categories 'select' field -->
+                            <tr>
+                                <td>Election</td>
+                                <td>` + categories_options_html + `</td>
+                            </tr>
+
                             <tr>
                                 <td>Status</td>
-                                <td><select name='status' class='form-control' height='150px'>
+                                <td><select name='status' class='form-control' style='height:60px'>
                                     <option value='Not Accredited'>NOT ACCREDITTED</option>
                                     <option value='Accredited'>ACCREDITTED</option>
                                 </select></td>
@@ -129,7 +143,7 @@ $(document).ready(function(){
                     
                     // chage page title
                     changePageTitle("Update Voter");
-            
+            });
         });
     });
      
