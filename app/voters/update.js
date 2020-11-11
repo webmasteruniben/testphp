@@ -31,6 +31,7 @@ $(document).ready(function(){
             var status = data.status;
             var category = data.category;
             var election = data.election;
+            var jwt = getCookie('jwt');
 
             
             
