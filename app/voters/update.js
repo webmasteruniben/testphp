@@ -11,7 +11,7 @@ $(document).ready(function(){
         // loop through returned list of data
         var categories_options_html=`<select name='election' class='form-control' style='height:60px'>`;
         $.each(data.records, function(key, val){
-            categories_options_html+=`<option value='` + val.name + `'>` + val.name + `</option>`;
+            categories_options_html+=`<option value='` + val.name + ` [` + val.id + `]'>` + val.name + `</option>`;
         });
         categories_options_html+=`</select>`;
         // read one record based on given product id
