@@ -124,7 +124,7 @@ $(document).ready(function(){
                     
                                 <!-- hidden 'product id' to identify which record to delete -->
                                 <td><input value=\"` + id + `\" name='id' type='hidden' /><br>
-                                   
+                                   <input value=\"` + jwt + `\" name='jwt' type='hidden' />
                                 </td>
 
                     

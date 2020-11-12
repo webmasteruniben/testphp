@@ -32,7 +32,7 @@ $voter = new Voter($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // get jwt
-//$jwt=isset($data->jwt) ? $data->jwt : "";
+$jwt=isset($data->jwt) ? $data->jwt : "";
  
 // decode jwt here
 // if jwt is not empty
@@ -67,7 +67,7 @@ $data = json_decode(file_get_contents("php://input"));
             // regenerate jwt will be here
             // we need to re-generate jwt because user details might be different
            
-            //$jwt = JWT::encode($token, $key);
+            $jwt = JWT::encode($token, $key);
             
             // set response code
             http_response_code(200);
