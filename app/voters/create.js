@@ -74,7 +74,7 @@ $(document).ready(function(){
 
                     <tr>
                         <td>Category</td>
-                        <td><select name='category' class='form-control' style='height:100px'>
+                        <td><select name='category' class='form-control' style='height:60px'>
                             <option value='Staff'>Staff</option>
                             <option value='Student'>Student</option>
                         </select></td>
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
                     <tr>
                         <td>Status</td>
-                        <td><select name='status' class='form-control' height='100px'>
+                        <td><select name='status' class='form-control' style='height:60px'>
                             <option value='Not Accredited'>NOT ACCREDITTED</option>
                             <option value='Accredited'>ACCREDITTED</option>
                         </select></td>

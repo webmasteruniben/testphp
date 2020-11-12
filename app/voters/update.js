@@ -60,7 +60,7 @@ $(document).ready(function(){
 
                             <tr>
                                 <td>Middle Name</td>
-                                <td><input value=\"` + middlename + `\" type='text' name='middlename' class='form-control' required /></td>
+                                <td><input value=\"` + middlename + `\" type='text' name='middlename' class='form-control' /></td>
                             </tr>
 
                             <tr>
