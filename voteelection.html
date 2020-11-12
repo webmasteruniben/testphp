@@ -96,7 +96,7 @@
 
         $(document).on('click', '#sign_up', function(){
             // validate jwt to verify access
-            //var jwt = getCookie('jwt');
+            var jwt = getCookie('jwt');
            // $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
 
             $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
