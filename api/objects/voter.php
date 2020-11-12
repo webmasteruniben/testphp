@@ -259,13 +259,9 @@ public function updatevoter(){
     $this->middlename=htmlspecialchars(strip_tags($this->middlename));
     $this->level=htmlspecialchars(strip_tags($this->level));
     $this->department=htmlspecialchars(strip_tags($this->department));
-    $this->faculty=htmlspecialchars(strip_tags($this->faculty));
-    $this->category=htmlspecialchars(strip_tags($this->category));
-    $this->election=htmlspecialchars(strip_tags($this->election));
-    $this->number=htmlspecialchars(strip_tags($this->number));
+    
     $this->email=htmlspecialchars(strip_tags($this->email));
-    $this->code=htmlspecialchars(strip_tags($this->code));
-    $this->status=htmlspecialchars(strip_tags($this->status));
+   
     //$this->created=htmlspecialchars(strip_tags($this->created));
  
     // bind the values from the form
@@ -275,12 +271,7 @@ public function updatevoter(){
     $stmt->bindParam(':email', $this->email);
     $stmt->bindParam(':level', $this->level);
     $stmt->bindParam(':department', $this->department);
-    $stmt->bindParam(':faculty', $this->faculty);
-    $stmt->bindParam(':category', $this->category);
-    $stmt->bindParam(':election', $this->election);
-    $stmt->bindParam(':number', $this->number);
-    $stmt->bindParam(':code', $this->code);
-    $stmt->bindParam(':status', $this->status);
+    
     //$stmt->bindParam(':created', $this->created);
     
  
