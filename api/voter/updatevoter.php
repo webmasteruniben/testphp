@@ -32,7 +32,7 @@ $voter = new Voter($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // get jwt
-//$jwt=isset($data->jwt) ? $data->jwt : "";
+$jwt=isset($data->jwt) ? $data->jwt : "";
  
 // decode jwt here
 // if jwt is not empty
@@ -42,32 +42,44 @@ $data = json_decode(file_get_contents("php://input"));
     try {
  
         // decode jwt
-        //$decoded = JWT::decode($jwt, $key, array('HS256'));
+        $decoded = JWT::decode($jwt, $key, array('HS256'));
  
         // set user property values here
         // set user property values
         $voter->firstname = $data->firstname;
         $voter->lastname = $data->lastname;
         $voter->email = $data->email;
-        $voter->election = $data->election;
+        
         $voter->middlename = $data->middlename;
         $voter->department = $data->department;
-        $voter->faculty = $data->faculty;
+        
         $voter->level = $data->level;
-        $voter->number = $data->number;
-        $voter->code = $data->code;
-        $voter->category = $data->category;
-        $voter->status = $data->status;
+        $voter->password = $data->password;
+       
         //$voter->created = $data->created;
-        $voter->id = $data->id;
+        $voter->id = $decoded->data->id;
         
         // update user will be here
         // update the user record
-        if($voter->update()){
+        if($voter->updatevoter()){
             // regenerate jwt will be here
             // we need to re-generate jwt because user details might be different
-           
-            //$jwt = JWT::encode($token, $key);
+            $token = array(
+                "iss" => $iss,
+                "aud" => $aud,
+                "iat" => $iat,
+                "nbf" => $nbf,
+                "data" => array(
+                    "id" => $voter->id,
+                    "firstname" => $voter->firstname,
+                    "lastname" => $voter->lastname,
+                    "middlename" => $voter->middlename,
+                    "email" => $voter->email,
+                    "level" => $voter->level,
+                    "department" => $voter->department
+                )
+            );
+            $jwt = JWT::encode($token, $key);
             
             // set response code
             http_response_code(200);
