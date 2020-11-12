@@ -127,7 +127,7 @@ function readOneByElection(){
             WHERE
                 p.category_id = ?
             LIMIT
-                0,1";
+                0,10";
   
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
