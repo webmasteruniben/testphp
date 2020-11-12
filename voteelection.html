@@ -102,6 +102,12 @@
             $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
                     // build categories option html
                 // loop through returned list of data
+
+                var select_election = result.data.election;
+                var splitelection = select_election.split('[');
+                var splitelectionid = splitelection[1].split(']');
+                var electionid = splitelectionid[0];
+                console.log(electionid);
                 var html = `
                         <h2>Sign Up for ` + result.data.election + `</h2>
                         <form id='register_election_form'>
