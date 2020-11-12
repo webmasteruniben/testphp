@@ -76,12 +76,12 @@
         $('#response').html("<div class='alert alert-success'>Enter your StudentID/StaffID and password</div>");
         var jwt = getCookie('jwt');
         $.post("api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
-            $("#login, #sign_up").hide();
-            $("#logout, #elections, #results").show();
+            $("#login").hide();
+            $("#logout, #elections, #results, #sign_up").show();
         })
         .fail(function(result){
-            $("#login, #sign_up").show();
-            $("#logout, #elections, #results").hide();
+            $("#login").show();
+            $("#logout, #elections, #results, #sign_up").hide();
         });
 
 
@@ -99,104 +99,64 @@
             //var jwt = getCookie('jwt');
            // $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
 
-            $.getJSON("https://testphp.uniben.edu/api/election/readstatus.php", function(data){
+            $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
                     // build categories option html
                 // loop through returned list of data
-                var categories_options_html=`<select name='category_id' class='form-control' style='height:40px'>`;
-                $.each(data.records, function(key, val){
-                    categories_options_html+=`<option value='` + val.id + `'>` + val.name + `</option>`;
-                });
-                categories_options_html+=`</select>`;
-
                 var html = `
-                    <h2>Register Voter</h2>
-                    <form id='sign_up_form'>
-                        <div class="form-group">
-                        <label for="election">Election</label>
-                        ` + categories_options_html + `
-                        </div>
-                        <div class="form-group">
-                            <label for="firstname">Firstname</label>
-                            <input type="text" class="form-control" name="firstname" id="firstname" required />
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="lastname">Lastname</label>
-                            <input type="text" class="form-control" name="lastname" id="lastname" required />
-                        </div>
+                        <h2>Sign Up for ` + result.data.election + `</h2>
+                        <form id='register_election_form'>
+                            <div class="form-group">
+                                <label for="firstname">` + result.data.firstname + `</label>
+                                <input type="hidden" class="form-control" name="firstname" id="firstname" value="` + result.data.firstname + `" />
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="lastname">` + result.data.lastname + `</label>
+                                <input type="hidden" class="form-control" name="lastname" id="lastname" value="` + result.data.lastname + `" />
+                            </div>
 
-                        <div class="form-group">
-                            <label for="middlename">Middlename</label>
-                            <input type="text" class="form-control" name="middlename" id="middlename" />
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" required />
-                        </div>
+                            <div class="form-group">
+                                <label for="middlename">` + result.data.middlename + `</label>
+                                <input type="hidden" class="form-control" name="middlename" id="middlename" value="` + result.data.middlename + `" />
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="email">` + result.data.email + `</label>
+                                <input type="hidden" class="form-control" name="email" id="email"  value="` + result.data.email + `" />
+                            </div>
 
-                        <div class="form-group">
-                            <label for="level">Level</label>
-                            <input type="text" class="form-control" name="level" id="level" />
-                        </div>
+                            <div class="form-group">
+                                <label for="faculty">` + result.data.faculty + `</label>
+                                <input type="hidden" class="form-control" name="faculty" id="faculty" value="` + result.data.faculty + `" />
+                            </div>
 
-                        <div class="form-group">
-                            <label for="faculty">Faculty</label>
-                            <select name="faculty" id="faculty">
-                                <option value="Agriculture">Agriculture</option>
-                                <option value="Arts">Arts</option>
-                                <option value="Education">Education</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="Environmental Science">Environmental Science</option>
-                                <option value="Law">Law</option>
-                                <option value="Life Science">Life Science</option>
-                                <option value="Management Science">Management Science</option>
-                                <option value="Pharmacy">Pharmacy</option>
-                                <option value="Physical Science">Physical Science</option>
-                                <option value="Social Science">Social Science</option>
-                                <option value="College of Medicine">College of Medicine</option>
-                                <option value="Veterinary Medicine">Veterinary Medicine</option>
+                            <div class="form-group">
+                                <label for="department">` + result.data.department + `</label>
+                                <input type="hidden" class="form-control" name="department" id="department" value="` + result.data.department + `" />
+                            </div>
 
-                            </select>
-                            
-                        </div>
+                            <div class="form-group">
+                                
+                                <input type="hidden" class="form-control" name="election" id="election" value="` + result.data.election + `" />
+                            </div>
 
-                        <div class="form-group">
-                            <label for="department">Department</label>
-                            <input type="text" class="form-control" name="department" id="department" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="category">Category</label>
-                            <select name="category" id="category">
-                                <option value="Staff">Staff</option>
-                                <option value="Student">Student</option>
-                            
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="number">Matriculation/UBJ/UBS Number</label>
-                            <input type="text" class="form-control" name="number" id="number" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="code">Student ID/Employee ID</label>
-                            <input type="text" class="form-control" name="code" id="code" />
-                        </div>
-
-                            
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" required />
-                        </div>
-
-                        <input type="hidden" name="status" id="status" value="NON-ACCREDIT" />
-        
-                        <button type='submit' class='btn btn-primary'>Register</button>
-                    </form>
+                            <div class="form-group">
+                                
+                                <input type="hidden" class="form-control" name="status" id="status" value="` + result.data.status + `" />
+                            </div>
+                
+                           
+                           <!-- <div class="form-group">
+                                
+                                <input type="hidden" class="form-control" name="id" id="id" value="` + result.data.id + `" />
+                            </div>-->
+                
+                            <button type='submit' class='btn btn-primary'>
+                                Save Changes
+                            </button>
+                        </form>
                     `;
-        
+                
                 clearResponse();
                 $('#content').html(html);
                 //})//
@@ -297,6 +257,56 @@
         $(document).on('click', '#update_account', function(){
             showUpdateAccountForm();
         });
+
+
+        // trigger for creating voter information for election
+        // trigger when 'sign up' form is submitted
+        $(document).on('submit', '#register_election_form', function(){
+        
+        // handle for register_election_form
+        var register_election_form=$(this);
+
+        // validate jwt to verify access
+        //var jwt = getCookie('jwt');
+
+        // get form data and jwt here
+        // get form data
+        var register_election_form_obj = register_election_form.serializeObject()
+        
+        // add jwt on the object
+        //update_account_form_obj.jwt = jwt;
+        console.log(register_election_form_obj.status)
+        if(register_election_form_obj.status == 'ACCREDITED') {
+             // convert object to json string
+            var form_data=JSON.stringify(register_election_form_obj);
+            
+            // submit form data to api
+            $.ajax({
+                url: "https://testphp.uniben.edu/api/voteelection/create.php",
+                type : "POST",
+                contentType : 'application/json',
+                data : form_data,
+                success : function(result) {
+                    // if response is a success, tell the user it was a successful sign up & empty the input boxes
+                    $('#response').html("<div class='alert alert-success'>You Have Successfully Registered. Login.</div>");
+                    //register_election_form.find('input').val('');
+                },
+                error: function(xhr, resp, text){
+                    // on error, tell the user sign up failed
+                    $('#response').html("<div class='alert alert-danger'>Unable to Register Voter. Please try again.</div>");
+                }
+            });
+        // send data to api here
+        // submit form data to api
+        }
+        else {
+            $('#response').html("<div class='alert alert-danger'>Unable to Register Voter. Please try again.</div>");
+        }
+       
+        return false;
+        });
+
+
         
         // trigger for updating user account will be here
         // trigger when 'update account' form is submitted
@@ -314,7 +324,7 @@
         
         // add jwt on the object
         update_account_form_obj.jwt = jwt;
-        console.log(update_account_form_obj.middlename)
+        //console.log(update_account_form_obj.middlename)
         // convert object to json string
         var form_data=JSON.stringify(update_account_form_obj);
         
@@ -400,8 +410,8 @@
         function showLoggedOutMenu(){
             // show login and sign up from navbar & hide logout button
             //$("#login, #sign_up").show();
-            $("#login, #sign_up").show();
-            $("#logout, #elections, #results").hide();
+            $("#login").show();
+            $("#logout, #elections, #results, #sign_up").hide();
         }
         
         // showHomePage() function will be here
@@ -460,8 +470,8 @@
         function showLoggedInMenu(){
             // hide login and sign up from navbar & show logout button
             //$("#login, #sign_up").hide();
-            $("#login, #sign_up").hide();
-            $("#logout, #elections, #results").show();
+            $("#login").hide();
+            $("#logout, #elections, #results, #sign_up").show();
         }
         
         // showUpdateAccountForm() will be here
