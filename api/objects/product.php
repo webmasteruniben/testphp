@@ -125,7 +125,9 @@ function readOneByElection(){
                 categories c
                         ON p.category_id = c.id
             WHERE
-                p.category_id = ?";
+                p.category_id = ?
+            ORDER BY
+                p.created DESC";
   
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
@@ -136,15 +138,9 @@ function readOneByElection(){
     // execute query
     $stmt->execute();
   
-    // get retrieved row
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-  
-    // set values to object properties
-    $this->name = $row['name'];
-    $this->price = $row['price'];
-    $this->description = $row['description'];
-    $this->category_id = $row['category_id'];
-    $this->category_name = $row['category_name'];
+    
+    return $stmt;
+   
 }
 
 // update the product
