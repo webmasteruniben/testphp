@@ -113,7 +113,8 @@
                 console.log(electionid);
 
                 var html = `
-                        <h2>Sign Up for ` + result.data.election + `</h2>
+                        <h2>Election Candidates for ` + splitelection[0] + `</h2>
+                        <h3>Personal Information</h3>
                         <form id='register_election_form'>
                             <div class="form-group">
                                 <label for="firstname">` + result.data.firstname + `</label>
@@ -159,11 +160,11 @@
                            <!-- <div class="form-group">
                                 
                                 <input type="hidden" class="form-control" name="id" id="id" value="` + result.data.id + `" />
-                            </div>-->
+                            </div>
                 
                             <button type='submit' class='btn btn-primary'>
                                 Save Changes
-                            </button>
+                            </button>-->
                         </form>
                     `;
 
@@ -175,7 +176,7 @@
                         
 
                         //<!-- start table -->
-                      
+                        html += `<div class="row"><h2>Candidates</h2>`;
                 
                 
                     // loop through returned list of data
@@ -184,7 +185,9 @@
                         //console.log(val.name);
                         // creating new table row per record
 
-                        html +=`<div class="card" style="width: 18rem;">
+                        html +=`
+                                    <div class="col-sm-4">
+                                    <div class="card">
                                 <img src="..." class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">` + val.name + `</h5>
@@ -199,12 +202,14 @@
                                     <a href="#" class="card-link btn btn-primary">Vote Candidate</a>
                                     
                                 </div>
+                                </div>
                                 </div>`;
 
                         
                     });
                 
-                    
+                    // end table
+                    html+=`</div>`;
 
                     clearResponse();
                     
