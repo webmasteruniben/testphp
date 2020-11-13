@@ -53,6 +53,9 @@
  
             <!-- where main content will appear -->
             <div id="content"></div>
+
+            <!-- where election candidates will appear -->
+            <div id="electioncandidates"></div>
         </div>
     </div>
  
@@ -216,7 +219,7 @@
                     html+=`</table>`;
 
                     console.log(html);
-
+                    $('#electioncandidates').html(html);
                     });
                 
                 clearResponse();
@@ -264,6 +267,7 @@
         // remove any prompt messages
         function clearResponse(){
             $('#response').html('');
+            
         }
         
         // showLoginPage() will be here
