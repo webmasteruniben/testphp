@@ -124,6 +124,8 @@ function readOneByElection(){
     LEFT JOIN
     categories c
             ON p.category_id = c.id
+    WHERE
+        p.category_id = 19
     ORDER BY
     p.created DESC";
 
