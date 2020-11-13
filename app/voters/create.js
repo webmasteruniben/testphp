@@ -20,7 +20,7 @@ $(document).ready(function(){
         
             <!-- 'read products' button to show list of products -->
             <div id='read-products' class='btn btn-primary pull-right m-b-15px read-products-button'>
-                <span class='glyphicon glyphicon-list'></span> Read Voters
+                <span class='glyphicon glyphicon-list'></span> View Voters Information
             </div>
             <!-- 'create product' html form -->
             <form id='create-product-form' action='#' method='post' border='0'>

@@ -40,7 +40,7 @@ $(document).ready(function(){
                 // store 'update product' html to this variable
                 var update_product_html=`
                     <div id='read-products' class='btn btn-primary pull-right m-b-15px read-products-button'>
-                        <span class='glyphicon glyphicon-list'></span> View Voter Info
+                        <span class='glyphicon glyphicon-list'></span> View Voters Information
                     </div>
                     <!-- build 'update product' html form -->
                     <!-- we used the 'required' html5 property to prevent empty fields -->
