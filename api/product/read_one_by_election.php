@@ -18,7 +18,7 @@ $db = $database->getConnection();
 $product = new Product($db);
   
 // set ID property of record to read
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->category_id = isset($_GET['id']) ? $_GET['id'] : die();
   
 // read the details of product to be edited
 $stmt = $product->readOneByElection();

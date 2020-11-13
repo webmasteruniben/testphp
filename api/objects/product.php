@@ -89,7 +89,7 @@ function readOne(){
                 categories c
                         ON p.category_id = c.id
             WHERE
-                p.category_id = ?
+                p.id = ?
             LIMIT
                 0,1";
   
@@ -118,22 +118,22 @@ function readOneByElection(){
   
     // query to read single record
     $query = "SELECT
-                c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
-            FROM
-                " . $this->table_name . " p
-                LEFT JOIN
-                categories c
-                        ON p.category_id = c.id
-            WHERE
-                p.category_id = ?
-            ORDER BY
-                p.created DESC";
+        c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+        FROM
+            " . $this->table_name . " p
+        LEFT JOIN
+            categories c
+                    ON p.category_id = c.id
+        WHERE
+            p.category_id = ?
+        LIMIT
+            10,11";
   
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
   
     // bind id of product to be updated
-    $stmt->bindParam(1, $this->id);
+    $stmt->bindParam(1, $this->category_id);
   
     // execute query
     $stmt->execute();
