@@ -29,13 +29,13 @@
             <a class="nav-item nav-link" href="https://testphp.uniben.edu/">Home</a>
             <a class="nav-item nav-link" href="#" id='home'>Admin</a>
             <a class="nav-item nav-link" href="#" id='update_account'>Account</a>
-            <a class="nav-item nav-link" href="#" id='elections'>Elections</a>
+            <a class="nav-item nav-link" href="#" id='sign_up'>Elections</a>
             
             <a class="nav-item nav-link" href="results.html" id='results'>Results</a>
             
             <a class="nav-item nav-link" href="#" id='logout'>Logout</a>
             <a class="nav-item nav-link" href="#" id='login'>Login</a>
-            <a class="nav-item nav-link" href="#" id='sign_up'>Register User</a>
+            
         </div>
     </div>
 </nav>
@@ -202,7 +202,7 @@
                                     <button class='card-link btn btn-primary m-r-10px select-product-button' data-id='` + val.id + `'>
                                         <span class='glyphicon glyphicon-ok-circle'></span> Vote Candidate
                                     </button>
-                                    <button class='card-link btn btn-primary m-r-10px select-product-button' data-id='` + val.id + `'>
+                                    <button class='card-link btn btn-primary m-r-10px view-product-button' data-id='` + val.id + `'>
                                         <span class='glyphicon glyphicon-eye-open'></span> View Candidate
                                     </button>
                                     
@@ -230,6 +230,11 @@
             // $('#response').html("<div class='alert alert-danger'>Please register a new voter account.</div>");
             //});
             });
+        });
+
+        $(document).on('click', '#view-product-button', function(){
+            var id = $(this).attr('data-id');
+            console.log(id);
         });
      
         // trigger when registration form is submitted here
