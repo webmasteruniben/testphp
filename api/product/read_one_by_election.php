@@ -21,7 +21,7 @@ $product = new Product($db);
 $product->id = isset($_GET['id']) ? $_GET['id'] : die();
   
 // read the details of product to be edited
-$product->readOneByElection();
+$stmt = $product->readOneByElection();
 $num = $stmt->rowCount();
   
 // check if more than 0 record found
