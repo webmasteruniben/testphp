@@ -116,6 +116,8 @@ function readOne(){
 // used when filling up the update product form
 function readOneByElection(){
   
+    $this->category_id = 19;
+
    // select all query
    $query = "SELECT
     c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
@@ -125,7 +127,7 @@ function readOneByElection(){
     categories c
             ON p.category_id = c.id
     WHERE
-        p.category_id = 19
+        p.category_id = " . $this->category_id . "
     ORDER BY
     p.created DESC";
 
