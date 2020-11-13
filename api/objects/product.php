@@ -125,9 +125,7 @@ function readOneByElection(){
             categories c
                     ON p.category_id = c.id
         WHERE
-            p.category_id = ?
-        LIMIT
-            10,11";
+            p.category_id = ?";
   
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
