@@ -247,9 +247,9 @@
             
             
                 // loop through returned list of data
-                $.each(data.records, function(key, val) {
+             
             
-                    console.log(val.name);
+                    console.log(data.name);
                     // creating new table row per record
 
                     html +=`
@@ -257,16 +257,16 @@
                                 <div class="card">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">` + val.name + `</h5>
-                                <p class="card-text">` + val.description + `</p>
+                                <h5 class="card-title">` + data.name + `</h5>
+                                <p class="card-text">` + data.description + `</p>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">` + val.category_name + `</li>
-                                <li class="list-group-item">` + val.price + `</li>
+                                <li class="list-group-item">` + data.category_name + `</li>
+                                <li class="list-group-item">` + data.price + `</li>
                                 
                             </ul>
                             <div class="card-body">
-                                <button class='card-link btn btn-primary m-r-10px select-product-button' data-id='` + val.id + `'>
+                                <button class='card-link btn btn-primary m-r-10px select-product-button' data-id='` + data.id + `'>
                                     <span class='glyphicon glyphicon-ok-circle'></span> Vote Candidate
                                 </button>
                                 
@@ -275,8 +275,6 @@
                             </div>
                             </div>`;
 
-                    
-                });
             
                 // end table
                 html+=`</div>`;
