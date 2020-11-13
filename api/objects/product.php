@@ -116,27 +116,23 @@ function readOne(){
 // used when filling up the update product form
 function readOneByElection(){
   
-    // query to read single record
-    $query = "SELECT
-        c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
-        FROM
-            " . $this->table_name . " p
-        LEFT JOIN
-            categories c
-                    ON p.category_id = c.id
-        WHERE
-            p.category_id = ?";
-  
+   // select all query
+   $query = "SELECT
+    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+    FROM
+    " . $this->table_name . " p
+    LEFT JOIN
+    categories c
+            ON p.category_id = c.id
+    ORDER BY
+    p.created DESC";
+
     // prepare query statement
-    $stmt = $this->conn->prepare( $query );
-  
-    // bind id of product to be updated
-    $stmt->bindParam(1, $this->category_id);
-  
+    $stmt = $this->conn->prepare($query);
+
     // execute query
     $stmt->execute();
-  
-    
+
     return $stmt;
    
 }
