@@ -116,7 +116,7 @@ function readOne(){
 // used when filling up the update product form
 function readOneByElection(){
   
-    $this->category_id = 19;
+    //$this->category_id = 19;
 
    // select all query
    $query = "SELECT

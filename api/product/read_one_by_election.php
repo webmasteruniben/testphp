@@ -2,6 +2,11 @@
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
+
+header("Access-Control-Allow-Headers: access");
+header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Credentials: true");
+
   
 // database connection will be here
 // include database and object files
@@ -14,7 +19,7 @@ $db = $database->getConnection();
   
 // initialize object
 $product = new Product($db);
-  
+$product->category_id = isset($_GET['id']) ? $_GET['id'] : die();
 // read products will be here
 // query products
 $stmt = $product->readOneByElection();
