@@ -89,7 +89,7 @@ function readOne(){
                 categories c
                         ON p.category_id = c.id
             WHERE
-                p.id = ?
+                p.category_id = ?
             LIMIT
                 0,1";
   
