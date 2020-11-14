@@ -301,7 +301,7 @@
                 var electionid = splitelectionid[0];
                 console.log(electionid);
 
-                let person_name = ' ';
+                var person_name = ' ';
 
                 // get list of products from the API
             $.getJSON("https://testphp.uniben.edu/api/product/read_one.php?id=" + id, function(data){
@@ -309,9 +309,6 @@
                     
 
                 person_name +=  data.name + ' for ' + data.price;
-
-                console.log(person_name);
-                });
 
                 
                 console.log('candidate ' + person_name)
@@ -346,9 +343,15 @@
                     `;
 
                     clearResponse();
-                console.log(html);
-                $('#content').html(html);
+                    console.log(html);
+                    $('#content').html(html);
 
+
+
+
+                });
+
+                
                    
                     });
                 
