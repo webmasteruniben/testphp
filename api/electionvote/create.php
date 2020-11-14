@@ -16,7 +16,8 @@ $database = new Database();
 $db = $database->getConnection();
   
 $electionvote = new Electionvote($db);
-  
+$vote_exists = $electionvote->voteExists();
+
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
   
@@ -24,7 +25,7 @@ $data = json_decode(file_get_contents("php://input"));
 if(
     !empty($data->number) &&
     !empty($data->category_id) &&
-    !empty($data->product_id)  
+    !empty($data->product_id) && !$vote_exists
 ){
   
     // set product property values

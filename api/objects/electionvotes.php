@@ -85,6 +85,49 @@ class Electionvote{
         
     }
 
+    function voteExists(){
+ 
+        // query to check if email exists
+        $query = "SELECT id, number, product_id, category_id
+                FROM " . $this->table_name . "
+                WHERE number = ?
+                LIMIT 0,1";
+     
+        // prepare the query
+        $stmt = $this->conn->prepare( $query );
+     
+        // sanitize
+        $this->email=htmlspecialchars(strip_tags($this->number));
+     
+        // bind given email value
+        $stmt->bindParam(1, $this->number);
+     
+        // execute the query
+        $stmt->execute();
+     
+        // get number of rows
+        $num = $stmt->rowCount();
+     
+        // if email exists, assign values to object properties for easy access and use for php sessions
+        if($num>0){
+     
+            // get record details / values
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+            // assign values to object properties
+            $this->id = $row['id'];
+            $this->number = $row['number'];
+            $this->product_id = $row['product_id'];
+            $this->category_id = $row['category_id'];
+     
+            // return true because vote exists in the database
+            return true;
+        }
+     
+        // return false if vote does not exist in the database
+        return false;
+    }
+
 }
 
 
