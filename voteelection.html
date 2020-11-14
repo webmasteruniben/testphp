@@ -301,20 +301,20 @@
                 var electionid = splitelectionid[0];
                 console.log(electionid);
 
-                var person_name = '';
+                let person_name = ' ';
 
                 // get list of products from the API
             $.getJSON("https://testphp.uniben.edu/api/product/read_one.php?id=" + id, function(data){
                     
                     
 
-                person_name =  data.name + ' for ' + data.price;
+                person_name +=  data.name + ' for ' + data.price;
 
-                console.log(person_name)
+                console.log(person_name);
                 });
 
                 
-                console.log(person_name)
+                console.log('candidate ' + person_name)
 
                 var html = `
                         <h2>Vote Election Candidate for ` + splitelection[0] + `</h2>
