@@ -65,13 +65,13 @@ class Electionvote{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->name=htmlspecialchars(strip_tags($this->number));
-        $this->description=htmlspecialchars(strip_tags($this->product_id));
-        $this->status=htmlspecialchars(strip_tags($this->category_id));
+        $this->number=htmlspecialchars(strip_tags($this->number));
+        $this->product_id=htmlspecialchars(strip_tags($this->product_id));
+        $this->category_id=htmlspecialchars(strip_tags($this->category_id));
         $this->created=htmlspecialchars(strip_tags($this->created));
     
         // bind values
-        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":number", $this->number);
         $stmt->bindParam(":product_id", $this->product_id);
         $stmt->bindParam(":category_id", $this->category_id);
         $stmt->bindParam(":created", $this->created);
