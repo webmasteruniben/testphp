@@ -168,6 +168,8 @@
                         </form>
                     `;
 
+                 
+
                     // get list of products from the API
                     $.getJSON("https://testphp.uniben.edu/api/product/read_one_by_election.php?id=" + electionid, function(data){
                     
@@ -184,8 +186,8 @@
                 
                         //console.log(val.name);
                         // creating new table row per record
-
-                        html +=`
+                        if(result.data.status=='ACCREDITTED'){
+                         html +=`
                                     <div class="col-sm-4">
                                     <div class="card">
                                 <img src="..." class="card-img-top" alt="...">
@@ -209,6 +211,9 @@
                                 </div>
                                 </div>
                                 </div>`;
+                    }
+
+                       
 
                         
                     });
@@ -380,7 +385,36 @@
             success : function(result) {
                 // if response is a success, tell the user it was a successful sign up & empty the input boxes
                 $('#response').html("<div class='alert alert-success'>Your Vote has been recorded successfully.</div>");
-                sign_up_form.find('input').val('');
+                 // send delete request to api / remote server
+                 // validate jwt to verify access
+            var jwt = getCookie('jwt');
+           // $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+
+            $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+                 $.ajax({
+                        url: "https://testphp.uniben.edu/api/voter/accredit.php",
+                        type : "POST",
+                        dataType : 'json',
+                        data : JSON.stringify({ id: result.data.id, status: "VOTED" }),
+                        success : function(results) {
+                
+                            // re-load list of products
+                            //location.reload(true);
+                            var html = `
+                                <h3>Thankyou for voting</h3>
+                                
+                               
+                            `;
+
+                            //clearResponse();
+                            
+                            $('#content').html(html);
+                        },
+                        error: function(xhr, resp, text) {
+                            console.log(xhr, resp, text);
+                        }
+                    });
+                });
             },
             error: function(xhr, resp, text){
                 // on error, tell the user sign up failed
