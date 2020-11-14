@@ -310,8 +310,11 @@
 
                 person_name =  data.name + ' for ' + data.price;
 
-            
+                console.log(person_name)
                 });
+
+                
+                console.log(person_name)
 
                 var html = `
                         <h2>Vote Election Candidate for ` + splitelection[0] + `</h2>
@@ -342,12 +345,14 @@
                         </form>
                     `;
 
+                    clearResponse();
+                console.log(html);
+                $('#content').html(html);
+
                    
                     });
                 
-                clearResponse();
-                console.log(html);
-                $('#content').html(html);
+               
                 //})//
             //  .fail(function(result){
             //  showLoginPage();
