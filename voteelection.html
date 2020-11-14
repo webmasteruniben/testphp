@@ -249,7 +249,7 @@
                 // loop through returned list of data
              
             
-                    console.log(data.name);
+                    //console.log(data.name);
                     // creating new table row per record
 
                     html +=`
@@ -283,6 +283,77 @@
                 
                 $('#content').html(html);
                 });
+        });
+
+        $(document).on('click', '.select-product-button', function(){
+            var id = $(this).attr('data-id');
+            // validate jwt to verify access
+            var jwt = getCookie('jwt');
+           // $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+
+            $.post("https://testphp.uniben.edu/api/voter/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+                    // build categories option html
+                // loop through returned list of data
+
+                var select_election = result.data.election;
+                var splitelection = select_election.split('[');
+                var splitelectionid = splitelection[1].split(']');
+                var electionid = splitelectionid[0];
+                console.log(electionid);
+
+                var person_name = '';
+
+                // get list of products from the API
+            $.getJSON("https://testphp.uniben.edu/api/product/read_one.php?id=" + id, function(data){
+                    
+                    
+
+                person_name =  data.name + ' for ' + data.price;
+
+            
+                });
+
+                var html = `
+                        <h2>Vote Election Candidate for ` + splitelection[0] + `</h2>
+                        
+                        <form id='vote_candidate_form'>
+                            
+                
+                            <div class="form-group">
+                                
+                                <input type="hidden" class="form-control" name="category_id" id="category_id"  value="` + electionid + `" />
+                            </div>
+
+                            <div class="form-group">
+                                
+                                <input type="hidden" class="form-control" name="number" id="number" value="` + result.data.number + `" />
+                            </div>
+
+                            <div class="form-group">
+                               
+                                <input type="hidden" class="form-control" name="product_id" id="product_id" value="` + id + `" />
+                            </div>
+
+                            
+                
+                            <button type='submit' class='btn btn-primary'>
+                                Confirm ` + person_name + `
+                            </button>
+                        </form>
+                    `;
+
+                   
+                    });
+                
+                clearResponse();
+                console.log(html);
+                $('#content').html(html);
+                //})//
+            //  .fail(function(result){
+            //  showLoginPage();
+            // $('#response').html("<div class='alert alert-danger'>Please register a new voter account.</div>");
+            //});
+            });
         });
      
         // trigger when registration form is submitted here
