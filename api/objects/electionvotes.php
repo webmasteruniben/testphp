@@ -128,6 +128,37 @@ class Electionvote{
         return false;
     }
 
+     // used when filling up the update product form
+    function countVotes(){
+    
+        //$this->category_id = 19;
+
+    // select all query
+    $query = "SELECT
+        COUNT(number) AS votes, product_id, p.name AS candidate, price, e.category_id, c.name AS election
+        FROM
+        " . $this->table_name . " e
+        JOIN
+        products p
+                ON p.id = e.product_id
+        JOIN
+        categories c
+                ON c.id=e.category_id
+        WHERE
+            e.category_id = " . $this->category_id . "
+        GROUP BY
+        product_id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    
+    }
+
 }
 
 

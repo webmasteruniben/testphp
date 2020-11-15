@@ -16,7 +16,7 @@ $database = new Database();
 $db = $database->getConnection();
   
 $electionvote = new Electionvote($db);
-$vote_exists = $electionvote->voteExists();
+
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -25,7 +25,7 @@ $data = json_decode(file_get_contents("php://input"));
 if(
     !empty($data->number) &&
     !empty($data->category_id) &&
-    !empty($data->product_id) && !$vote_exists
+    !empty($data->product_id) 
 ){
   
     // set product property values
@@ -35,24 +35,33 @@ if(
     $electionvote->created = date('Y-m-d H:i:s');
   
     // create the product
-    if($electionvote->create()){
-  
-        // set response code - 201 created
-        http_response_code(201);
-  
+    if($electionvote->voteExists()){
+        // set response code - 400 bad request
+        http_response_code(400);
+    
         // tell the user
-        echo json_encode(array("message" => "Election Vote was created."));
+        echo json_encode(array("message" => "You have already Voted."));
+    } else {
+        if($electionvote->create()){
+    
+            // set response code - 201 created
+            http_response_code(201);
+    
+            // tell the user
+            echo json_encode(array("message" => "Election Vote was created."));
+        }
+    
+        // if unable to create the product, tell the user
+        else{
+    
+            // set response code - 503 service unavailable
+            http_response_code(503);
+    
+            // tell the user
+            echo json_encode(array("message" => "Unable to create election vote."));
+        }
     }
-  
-    // if unable to create the product, tell the user
-    else{
-  
-        // set response code - 503 service unavailable
-        http_response_code(503);
-  
-        // tell the user
-        echo json_encode(array("message" => "Unable to create election vote."));
-    }
+   
 }
   
 // tell the user data is incomplete
