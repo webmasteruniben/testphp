@@ -59,6 +59,11 @@ function readProductsTemplate(data, keywords){
                 <button class='btn btn-primary m-r-10px update-status-button' data-id='` + val.id + `'>
                     <span class='glyphicon glyphicon-eye-open'></span> Update Status
                 </button>
+
+                <!-- count vote button -->
+                <button class='btn btn-success m-r-10px count-vote-button' data-id='` + val.id + `'>
+                    <span class='glyphicon glyphicon-list-alt'></span> Count Votes
+                </button>
  
                 <!-- delete button -->
                 <button class='btn btn-danger delete-product-button' data-id='` + val.id + `'>
