@@ -5,9 +5,14 @@ $(document).ready(function(){
         // product ID will be here
         // get product id
         var id = $(this).attr('data-id');
-        console.log(id)
+        setInterval(function(){ 
+            
+        console.log(id);
+
         var update_product_html =`<div class="row"><h2>View Vote Count</h2></div><div class="row">`;
         // read one record based on given product id
+
+        
         $.getJSON("https://testphp.uniben.edu/api/electionvote/count_vote.php?id=" + id, function(data){
 
             // loop through returned list of data
@@ -45,6 +50,8 @@ $(document).ready(function(){
             changePageTitle("Count Votes");
             
         });
+         }, 3000);
+        
     });
      
     // 'update product form' submit handle will be here
