@@ -19,11 +19,11 @@ $(document).ready(function(){
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h1 class="card-title">` + val.candidate + `</h1>
-                                <p class="card-text">` + val.price + `</p>
+                                <h3 class="card-text">` + val.price + `</h3>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">` + val.election + `</li>
-                                <li class="list-group-item">` + val.votes + `</li>
+                                <li class="list-group-item"><h2>` + val.election + `</h2></li>
+                                <li class="list-group-item"><span style="font-size:500%">` + val.votes + `</span></li>
                                 
                             </ul>
                             <div class="card-body">
