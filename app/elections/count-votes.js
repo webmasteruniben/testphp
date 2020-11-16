@@ -18,7 +18,7 @@ $(document).ready(function(){
                                 <div class="card">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">` + val.candidate + `</h5>
+                                <h1 class="card-title">` + val.candidate + `</h1>
                                 <p class="card-text">` + val.price + `</p>
                             </div>
                             <ul class="list-group list-group-flush">
