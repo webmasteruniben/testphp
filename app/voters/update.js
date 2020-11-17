@@ -115,7 +115,10 @@ $(document).ready(function(){
                                 </select></td>
                             </tr>
                     
-                           
+                           <tr>
+                                <td>Password</td>
+                                <td><input type="password" class="form-control" name="password" id="password" /></td>
+                            </tr>
                     
                             
                     
