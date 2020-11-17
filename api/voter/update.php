@@ -60,6 +60,7 @@ $data = json_decode(file_get_contents("php://input"));
         $voter->status = $data->status;
         //$voter->created = $data->created;
         $voter->id = $data->id;
+        $voter->password = $data->password;
         
         // update user will be here
         // update the user record
