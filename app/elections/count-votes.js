@@ -19,7 +19,7 @@ $(document).ready(function(){
             $.each(data.records, function(key, val) {
                 console.log(val.candidate);
                 // creating new table row per record
-                update_product_html+=`<div class="col-sm-6">
+                update_product_html+=`<div class="col-sm-4">
                                 <div class="card">
                             <img src="images/` + val.profile_pic + `" class="card-img-top" alt="..." style="height:285px;">
                             <div class="card-body">
