@@ -122,7 +122,7 @@ function readOneByElection(){
 
    // select all query
    $query = "SELECT
-    c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic, p.category_id, p.created
+    c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic as profile_pic, p.category_id, p.created
     FROM
     " . $this->table_name . " p
     LEFT JOIN
