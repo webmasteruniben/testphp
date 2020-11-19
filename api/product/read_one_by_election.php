@@ -46,6 +46,7 @@ if($num>0){
             "name" => $name,
             "description" => html_entity_decode($description),
             "price" => $price,
+            "profile_pic" => $product->profile_pic,
             "category_id" => $category_id,
             "category_name" => $category_name
         );
