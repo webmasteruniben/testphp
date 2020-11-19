@@ -57,6 +57,11 @@ function readProductsTemplate(data, keywords){
                 <button class='btn btn-info m-r-10px update-product-button' data-id='` + val.id + `'>
                     <span class='glyphicon glyphicon-edit'></span> Edit
                 </button>
+
+                <!-- edit button -->
+                <button class='btn btn-info m-r-10px update-photo-button' data-id='` + val.id + `'>
+                    <span class='glyphicon glyphicon-edit'></span> Update Photo
+                </button>
  
                 <!-- delete button -->
                 <button class='btn btn-danger delete-product-button' data-id='` + val.id + `'>
