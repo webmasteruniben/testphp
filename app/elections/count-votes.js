@@ -21,7 +21,7 @@ $(document).ready(function(){
                 // creating new table row per record
                 update_product_html+=`<div class="col-sm-6">
                                 <div class="card">
-                            <img src="images/icpc.jpg" class="card-img-top" alt="...">
+                            <img src="images/` + val.profile_pic + `" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h1 class="card-title">` + val.candidate + `</h1>
                                 <h3 class="card-text">` + val.price + `</h3>

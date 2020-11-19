@@ -135,7 +135,7 @@ class Electionvote{
 
     // select all query
     $query = "SELECT
-        COUNT(number) AS votes, product_id, p.name AS candidate, price, e.category_id, c.name AS election
+        COUNT(number) AS votes, product_id, p.name AS candidate, price, profile_pic, e.category_id, c.name AS election
         FROM
         " . $this->table_name . " e
         JOIN
