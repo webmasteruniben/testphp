@@ -19,6 +19,12 @@ $(document).ready(function(){
                 <!-- product data will be shown in this table -->
                 <table class='table table-bordered table-hover'>
                 
+                    <!-- product photo -->
+                    <tr>
+                        <td class='w-30-pct'>Photo</td>
+                        <td class='w-70-pct'><img src='images/` + data.profile_pic + `' style='height:50%;width:50%;'></td>
+                    </tr>
+
                     <!-- product name -->
                     <tr>
                         <td class='w-30-pct'>Name</td>

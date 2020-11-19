@@ -27,6 +27,7 @@ function readProductsTemplate(data, keywords){
  
             <!-- creating our table heading -->
             <tr>
+                <th class='w-25-pct'>Photo</th>
                 <th class='w-25-pct'>Name</th>
                 <th class='w-10-pct'>Position</th>
                 <th class='w-15-pct'>Category</th>
@@ -39,7 +40,8 @@ function readProductsTemplate(data, keywords){
  
         // creating new table row per record
         read_products_html+=`<tr>
- 
+
+            <td><img src='images/` + val.profile_pic + `' style='height:25%;width:25%;'></td>
             <td>` + val.name + `</td>
             <td>` + val.price + `</td>
             <td>` + val.category_name + `</td>
