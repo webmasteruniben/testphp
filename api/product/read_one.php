@@ -30,6 +30,7 @@ if($product->name!=null){
         "name" => $product->name,
         "description" => $product->description,
         "price" => $product->price,
+        "profile_pic" => $product->profile_pic,
         "category_id" => $product->category_id,
         "category_name" => $product->category_name
   

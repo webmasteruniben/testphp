@@ -10,6 +10,7 @@ class Product{
     public $name;
     public $description;
     public $price;
+    public $profile_pic;
     public $category_id;
     public $category_name;
     public $created;
@@ -82,7 +83,7 @@ function readOne(){
   
     // query to read single record
     $query = "SELECT
-                c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+                c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic, p.category_id, p.created
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
@@ -108,6 +109,7 @@ function readOne(){
     // set values to object properties
     $this->name = $row['name'];
     $this->price = $row['price'];
+    $this->profile_pic = $row['profile_pic'];
     $this->description = $row['description'];
     $this->category_id = $row['category_id'];
     $this->category_name = $row['category_name'];
