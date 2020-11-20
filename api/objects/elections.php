@@ -253,7 +253,8 @@ function update(){
                 " . $this->table_name . "
             SET
                 name = :name,
-                description = :description
+                description = :description,
+                status = :status
             WHERE
                 id = :id";
   
