@@ -9,7 +9,7 @@
 
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-
+    echo "submit " . $_POST['submit'];
     if(isset($_POST['submit'])) {
 
         $profile_id = $_POST['id'];
