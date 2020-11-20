@@ -42,44 +42,39 @@ $(document).ready(function(){
                     <!-- build 'update product' html form -->
                     <!-- we used the 'required' html5 property to prevent empty fields -->
                     <form method="POST" action="upload.php" enctype="multipart/form-data">
-                        <table class='table table-hover table-responsive table-bordered'>
-                    
-                            <!-- name field -->
-                            <tr>
-                                <td>Name</td>
-                                <td><input value=\"` + name + `\" type='text' name='name' class='form-control' required /></td>
-                            </tr>
-                    
-                           
-                    
-                            <!-- description field -->
-                            <tr>
-                                <td>Profile Photo</td>
-                                <td><img src='images/` + profile_pic + `' style='height:25%;width:25%;'></td>
-                            </tr>
-                    
 
-                            <!-- description field -->
-                            <tr>
-                                <td>Profile Photo</td>
-                                <td><input type="file" class="form-control" name="profile_photo" id="profile_photo" /></td>
-                            </tr>
-                    
-                            <tr>
-                    
-                                <!-- hidden 'product id' to identify which record to delete -->
-                                <td><input value=\"` + id + `\" name='id' type='hidden' /></td>
-                    
-                                <!-- button to submit form -->
-                                <td>
-                                    <button type='submit' class='btn btn-info'>
-                                        <span class='glyphicon glyphicon-edit'></span> Update Candidate Photo
-                                    </button>
-                                </td>
-                    
-                            </tr>
-                    
-                        </table>
+
+                        <div class="form-group">
+
+                        <img width="300px" src="images/` + profile_pic + `" class="image-responsive" alt="` + name +`">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_photo">Profile Picture</label>
+                            
+                            <input type="file" class="form-control" name="profile_photo" id="profile_photo" />
+                        </div>
+            
+                        
+            
+                        <div class="form-group">
+                            
+                            <input type="text" class="form-control" name="username" id="username" value="` + name + `" />
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <input type="hidden" class="form-control" name="id" id="id" value="` + id + `" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-primary" >
+                        </div>
+            
+                        <!--<button type='submit' class='btn btn-primary'>
+                            Save Changes
+                        </button>-->
+                        
                     </form>`;
                     // inject to 'page-content' of our app
                     $("#page-content").html(update_product_html);
