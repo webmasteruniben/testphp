@@ -58,6 +58,7 @@ if($email_exists && password_verify($data->password, $voter->password)){
            "code" => $voter->code,
            "category" => $voter->category,
            "election" => $voter->election,
+           "gender" => $voter->gender,
            "status" => $voter->status
        )
     );

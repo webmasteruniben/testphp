@@ -31,6 +31,7 @@ $(document).ready(function(){
             var status = data.status;
             var category = data.category;
             var election = data.election;
+            var gender = data.gender;
             var jwt = getCookie('jwt');
 
             
@@ -96,6 +97,7 @@ $(document).ready(function(){
                             <tr>
                                 <td>Category</td>
                                 <td><select name='category' class='form-control' style='height:60px'>
+                                    <option value=\"` + category + `\">` + category + `</option>
                                     <option value='Staff'>Staff</option>
                                     <option value='Student'>Student</option>
                                 </select></td>
@@ -108,8 +110,18 @@ $(document).ready(function(){
                             </tr>
 
                             <tr>
+                                <td>Gender</td>
+                                <td><select name='gender' class='form-control' style='height:60px'>
+                                        <option value=\"` + gender + `\">` + gender + `</option>
+                                        <option value='FEMALE'>FEMALE</option>
+                                        <option value='MALE'>MALE</option>
+                                    </select></td>
+                            </tr>
+
+                            <tr>
                                 <td>Status</td>
                                 <td><select name='status' class='form-control' style='height:60px'>
+                                    <option value=\"` + status + `\">` + status + `</option>
                                     <option value='NOT ACCREDITTED'>NOT ACCREDITTED</option>
                                     <option value='ACCREDITTED'>ACCREDITTED</option>
                                 </select></td>

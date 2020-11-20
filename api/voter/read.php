@@ -50,6 +50,7 @@ if($num>0){
             "created" => $created,
             "category" => $category,
             "election" => $election,
+            "gender" => $gender,
             "status" => $status
         );
   

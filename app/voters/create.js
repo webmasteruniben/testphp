@@ -86,6 +86,14 @@ $(document).ready(function(){
                         <td>` + categories_options_html + `</td>
                     </tr>
 
+                    <tr>
+                        <td>Gender</td>
+                        <td><select name='gender' class='form-control' style='height:60px'>
+                            <option value='FEMALE'>FEMALE</option>
+                            <option value='MALE'>MALE</option>
+                        </select></td>
+                    </tr>
+
 
 
                     <tr>

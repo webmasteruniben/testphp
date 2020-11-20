@@ -69,6 +69,16 @@ $(document).ready(function(){
                         <td class='w-30-pct'>Category</td>
                         <td class='w-70-pct'>` + data.category + `</td>
                     </tr>
+
+                    <tr>
+                        <td class='w-30-pct'>Election</td>
+                        <td class='w-70-pct'>` + data.election + `</td>
+                    </tr>
+
+                    <tr>
+                        <td class='w-30-pct'>Gender</td>
+                        <td class='w-70-pct'>` + data.gender + `</td>
+                    </tr>
                 
                     <!-- product description -->
                     <tr>

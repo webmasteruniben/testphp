@@ -50,6 +50,7 @@ $data = json_decode(file_get_contents("php://input"));
         $voter->lastname = $data->lastname;
         $voter->email = $data->email;
         $voter->election = $data->election;
+        $voter->gender = $data->gender;
         $voter->middlename = $data->middlename;
         $voter->department = $data->department;
         $voter->faculty = $data->faculty;

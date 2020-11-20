@@ -37,6 +37,9 @@ if($num>0){
         $electionvote_item=array(
             "id" => $id,
             "number" => $number,
+            "faculty" => $faculty,
+            "department" => $department,
+            "gender" => $gender,
             "product_id" => $product_id,
             "category_id" => $category_id
         );

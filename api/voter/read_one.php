@@ -37,6 +37,7 @@ if($voter->email!=null){
         "code" => $voter->code,
         "category" => $voter->category,
         "election" => $voter->election,
+        "gender" => $voter->gender,
         "number" => $voter->number,
         "status" => $voter->status,
         "created" => $voter->created,
