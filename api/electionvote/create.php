@@ -33,6 +33,7 @@ if(
     $electionvote->faculty = $data->faculty;
     $electionvote->department = $data->department;
     $electionvote->gender = $data->gender;
+    $electionvote->position = $data->position;
     $electionvote->product_id = $data->product_id;
     $electionvote->category_id = $data->category_id;
     $electionvote->created = date('Y-m-d H:i:s');

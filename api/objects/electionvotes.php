@@ -12,6 +12,7 @@ class Electionvote{
     public $faculty;
     public $department;
     public $gender;
+    public $position;
     public $product_id;
     public $category_id;
     public $created;
@@ -25,7 +26,7 @@ class Electionvote{
     public function readAll(){
         //select all data
         $query = "SELECT
-                    id, number, product_id, faculty, department, gender, category_id, created
+                    id, number, product_id, faculty, department, gender, position, category_id, created
                 FROM
                     " . $this->table_name . "
                 ORDER BY
@@ -42,7 +43,7 @@ class Electionvote{
     
             //select all data
             $query = "SELECT
-            id, number, faculty, department, gender, product_id, category_id, created
+            id, number, faculty, department, gender, position, product_id, category_id, created
         FROM
             " . $this->table_name . "
         ORDER BY
@@ -62,7 +63,7 @@ class Electionvote{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    number=:number, faculty=:faculty, department=:department, gender=:gender, product_id=:product_id, category_id=:category_id, created=:created";
+                    number=:number, faculty=:faculty, department=:department, gender=:gender, position=:position, product_id=:product_id, category_id=:category_id, created=:created";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -72,6 +73,7 @@ class Electionvote{
         $this->faculty=htmlspecialchars(strip_tags($this->faculty));
         $this->department=htmlspecialchars(strip_tags($this->department));
         $this->gender=htmlspecialchars(strip_tags($this->gender));
+        $this->position=htmlspecialchars(strip_tags($this->position));
         $this->product_id=htmlspecialchars(strip_tags($this->product_id));
         $this->category_id=htmlspecialchars(strip_tags($this->category_id));
         $this->created=htmlspecialchars(strip_tags($this->created));
@@ -81,6 +83,7 @@ class Electionvote{
         $stmt->bindParam(":faculty", $this->faculty);
         $stmt->bindParam(":department", $this->department);
         $stmt->bindParam(":gender", $this->gender);
+        $stmt->bindParam(":position", $this->position);
         $stmt->bindParam(":product_id", $this->product_id);
         $stmt->bindParam(":category_id", $this->category_id);
         $stmt->bindParam(":created", $this->created);
@@ -97,7 +100,7 @@ class Electionvote{
     function voteExists(){
  
         // query to check if email exists
-        $query = "SELECT id, number, faculty, department, gender, product_id, category_id
+        $query = "SELECT id, number, faculty, department, gender, position, product_id, category_id
                 FROM " . $this->table_name . "
                 WHERE number = ?
                 LIMIT 0,1";
@@ -129,6 +132,7 @@ class Electionvote{
             $this->faculty = $row['faculty'];
             $this->department = $row['department'];
             $this->gender = $row['gender'];
+            $this->position = $row['position'];
             $this->product_id = $row['product_id'];
             $this->category_id = $row['category_id'];
      
@@ -147,7 +151,7 @@ class Electionvote{
 
     // select all query
     $query = "SELECT
-        COUNT(number) AS votes, product_id, p.name AS candidate, price, profile_pic, e.category_id, c.name AS election
+        COUNT(number) AS votes, product_id, p.name AS candidate, price, e.position, profile_pic, e.category_id, c.name AS election
         FROM
         " . $this->table_name . " e
         JOIN

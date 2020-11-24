@@ -46,6 +46,7 @@ if($num>0){
             "product_id" => $product_id,
             "candidate" => $candidate,
             "price" => $price,
+            "position" => $position,
             "profile_pic" => $profile_pic,
             "category_id" => $category_id,
             "election" => $election

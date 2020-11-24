@@ -40,6 +40,7 @@ if($num>0){
             "faculty" => $faculty,
             "department" => $department,
             "gender" => $gender,
+            "position" => $position,
             "product_id" => $product_id,
             "category_id" => $category_id
         );
