@@ -54,6 +54,9 @@
             <!-- where main content will appear -->
             <div id="content"></div>
 
+            <!-- where main content will appear -->
+            <div id="votes"></div>
+
             <!-- where election candidates will appear 
             <div id="electioncandidates"></div>-->
         </div>
@@ -178,13 +181,13 @@
                     
 
                     //<!-- start table -->
-                    html +=`<div class="row"><h2>Votes</h2></div><div class="row"><table class="table table-responsive">`;
+                   var html1 =`<div class="row"><h2>Votes</h2></div><div class="row"><table class="table table-responsive">`;
             
             
                 // loop through returned list of data
                 $.each(voterdata.records, function(key, val) {
             
-                     html +=`
+                     html1 +=`
                                 <tr>
                                 <td>` + val.id + `</td>
                                 <td>` + val.number + `</td>
@@ -199,8 +202,10 @@
                 });
             
                 // end table
-                html+=`</table></div>`;
-
+                html1 +=`</table></div>`;
+                console.log(html1);
+                
+                $('#votes').html(html1);
                 
                 });
 
