@@ -183,7 +183,7 @@ class Electionvote{
     FROM
         " . $this->table_name . "
      WHERE
-     number = 'UBJ6777'
+     number = '" . $this->number . "'
     ORDER BY
         number";
 

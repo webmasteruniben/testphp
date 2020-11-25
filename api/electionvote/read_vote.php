@@ -13,7 +13,7 @@ $db = $database->getConnection();
   
 // initialize object
 $electionvote = new Electionvote($db);
-  
+$electionvote->number = isset($_GET['id']) ? $_GET['id'] : die();
 // query categorys
 $stmt = $electionvote->readVotes();
 $num = $stmt->rowCount();
