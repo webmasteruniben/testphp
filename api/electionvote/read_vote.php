@@ -13,10 +13,9 @@ $db = $database->getConnection();
   
 // initialize object
 $electionvote = new Electionvote($db);
-$electionvote->number = isset($_GET['number']) ? $_GET['number'] : die();
   
 // query categorys
-$stmt = $electionvote->readVote();
+$stmt = $electionvote->read();
 $num = $stmt->rowCount();
   
 // check if more than 0 record found
