@@ -180,11 +180,12 @@ class Electionvote{
 
         // sanitize
         $this->number=htmlspecialchars(strip_tags($this->number));
-        
+
         // query to check if email exists
         $query = "SELECT id, number, faculty, department, gender, position, product_id, category_id
                 FROM " . $this->table_name . "
-                WHERE number = '" . $this->number . "'";
+                ORDER BY
+                number";
      
         // prepare the query
         $stmt = $this->conn->prepare( $query );
