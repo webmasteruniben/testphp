@@ -182,6 +182,8 @@ class Electionvote{
         id, number, faculty, department, gender, position, product_id, category_id, created
     FROM
         " . $this->table_name . "
+     WHERE
+     number = 'UBJ6777'
     ORDER BY
         number";
 
