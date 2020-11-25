@@ -168,6 +168,44 @@
                         </form>
                     `;
 
+
+
+                     // get list of products from the API
+                     $.getJSON("https://testphp.uniben.edu/api/electionvote/read_vote.php?number=" + result.data.number, function(voterdata){
+                    
+                    // html for listing products
+                    
+                    
+
+                    //<!-- start table -->
+                    html +=`<div class="row"><h2>Votes</h2></div><div class="row"><table class="table table-responsive">`;
+            
+            
+                // loop through returned list of data
+                $.each(voterdata.records, function(key, val) {
+            
+                     html +=`
+                                <tr>
+                                <td>` + val.id + `</td>
+                                <td>` + val.number + `</td>
+                                <td>` + val.faculty + `</td>
+                                <td>` + val.department + `</td>
+                                <td>` + val.gender + `</td>
+                                <td>` + val.position + `</td>
+                            
+                            </tr>`;
+               
+                    
+                });
+            
+                // end table
+                html+=`</table></div>`;
+
+                
+                });
+
+
+
                  
 
                     // get list of products from the API
@@ -186,7 +224,7 @@
                 
                         console.log('status' + result.data.status);
                         // creating new table row per record
-                        if(result.data.status=='ACCREDITTED'){
+                        if(result.data.status=='ACCREDITTED' || result.data.status=='VOTED'){
                          html +=`
                                     <div class="col-sm-4">
                                     <div class="card">

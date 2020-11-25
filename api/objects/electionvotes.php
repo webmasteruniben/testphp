@@ -102,17 +102,18 @@ class Electionvote{
         // query to check if email exists
         $query = "SELECT id, number, faculty, department, gender, position, product_id, category_id
                 FROM " . $this->table_name . "
-                WHERE number = ?
-                LIMIT 0,1";
+                WHERE number = ? AND position = ?";
      
         // prepare the query
         $stmt = $this->conn->prepare( $query );
      
         // sanitize
-        $this->email=htmlspecialchars(strip_tags($this->number));
-     
+        $this->number=htmlspecialchars(strip_tags($this->number));
+        $this->position=htmlspecialchars(strip_tags($this->position));
+
         // bind given email value
         $stmt->bindParam(1, $this->number);
+        $stmt->bindParam(2, $this->position);
      
         // execute the query
         $stmt->execute();
@@ -173,6 +174,30 @@ class Electionvote{
 
         return $stmt;
     
+    }
+
+    function readVotes(){
+ 
+        // query to check if email exists
+        $query = "SELECT id, number, faculty, department, gender, position, product_id, category_id
+                FROM " . $this->table_name . "
+                WHERE number = ?";
+     
+        // prepare the query
+        $stmt = $this->conn->prepare( $query );
+     
+        // sanitize
+        $this->number=htmlspecialchars(strip_tags($this->number));
+        
+
+        // bind given email value
+        $stmt->bindParam(1, $this->number);
+        
+     
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+    
+        return $stmt;
     }
 
 }
