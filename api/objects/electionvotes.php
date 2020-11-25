@@ -177,21 +177,23 @@ class Electionvote{
     }
 
     function readVotes(){
- 
+
+        // sanitize
+        $this->number=htmlspecialchars(strip_tags($this->number));
+        
         // query to check if email exists
         $query = "SELECT id, number, faculty, department, gender, position, product_id, category_id
                 FROM " . $this->table_name . "
-                WHERE number = ?";
+                WHERE number = '" . $this->number . "'";
      
         // prepare the query
         $stmt = $this->conn->prepare( $query );
      
-        // sanitize
-        $this->number=htmlspecialchars(strip_tags($this->number));
+        
         
 
         // bind given email value
-        $stmt->bindParam(1, $this->number);
+        //$stmt->bindParam(1, $this->number);
         
      
         $stmt = $this->conn->prepare( $query );
