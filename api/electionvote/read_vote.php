@@ -15,7 +15,7 @@ $db = $database->getConnection();
 $electionvote = new Electionvote($db);
   
 // query categorys
-$stmt = $electionvote->read();
+$stmt = $electionvote->readVotes();
 $num = $stmt->rowCount();
   
 // check if more than 0 record found
