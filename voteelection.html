@@ -171,11 +171,11 @@
 
 
                      // get list of products from the API
-                     $.getJSON("https://testphp.uniben.edu/api/electionvote/read_vote.php?number=" + result.data.number, function(voterdata){
+                     $.getJSON("https://testphp.uniben.edu/api/electionvote/read_vote.php?id=" + result.data.number, function(voterdata){
                     
                     // html for listing products
                     
-                    
+                    console.log(val.position);
 
                     //<!-- start table -->
                     html +=`<div class="row"><h2>Votes</h2></div><div class="row"><table class="table table-responsive">`;
