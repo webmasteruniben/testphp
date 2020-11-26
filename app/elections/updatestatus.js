@@ -53,9 +53,9 @@ $(document).ready(function(){
                             <tr>
                                 <td>Update Status</td>
                                 <td>
-                                    <select name='status' id='status' class='form-control'>
-                                        <option value='Closed'>Closed</option>
-                                        <option value='Open'>Open</option>
+                                    <select name='status' id='status' class='form-control' style='height:60px'>
+                                        <option value='CLOSED'>Closed</option>
+                                        <option value='OPEN'>Open</option>
                                     </select>
                                 </td>
                             </tr>

@@ -13,6 +13,8 @@ $(document).ready(function(){
             var name = data.name;
            
             var description = data.description;
+
+            var status = data.status;
             
             
             
@@ -39,6 +41,17 @@ $(document).ready(function(){
                             <tr>
                                 <td>Description</td>
                                 <td><textarea name='description' class='form-control' required>` + description + `</textarea></td>
+                            </tr>
+
+                            <tr>
+                                <td>Update Status</td>
+                                <td>
+                                    <select name='status' id='status' class='form-control' style='height:60px'>
+                                        <option value=\"` + status + `\">` + status + `</option>
+                                        <option value='CLOSED'>Closed</option>
+                                        <option value='OPEN'>Open</option>
+                                    </select>
+                                </td>
                             </tr>
                     
                     
