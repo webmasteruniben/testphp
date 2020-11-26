@@ -203,73 +203,95 @@
             
                 // end table
                 html1 +=`</table></div>`;
-                console.log(html1);
+                //console.log(html1);
                 
                 $('#votes').html(html1);
                 
                 });
 
                 console.log("electionid; ", electionid);
+                $.getJSON("https://testphp.uniben.edu/api/election/read_one.php?id=" + electionid, function(data){
+                // read products button will be here
+                // start html
+                var election_status = data.status;
 
+                    if (election_status == 'OPEN') {
+                        
 
+                        
 
-                 
+                            // get list of products from the API
+                            $.getJSON("https://testphp.uniben.edu/api/product/read_one_by_election.php?id=" + electionid, function(data){
+                            
+                            // html for listing products
+                            
+                            
 
-                    // get list of products from the API
-                    $.getJSON("https://testphp.uniben.edu/api/product/read_one_by_election.php?id=" + electionid, function(data){
+                            //<!-- start table -->
+                            html +=`<div class="row"><h2>Candidates</h2></div><div class="row">`;
                     
-                        // html for listing products
-                        
+                    
+                        // loop through returned list of data
+                        $.each(data.records, function(key, val) {
+                    
+                            console.log('status' + result.data.status);
+                            // creating new table row per record
+                            if(result.data.status=='ACCREDITTED' || result.data.status=='VOTED'){
+                            html +=`
+                                        <div class="col-sm-4">
+                                        <div class="card">
+                                            <img src="images/` + val.profile_pic + `" class="card-img-top" alt="..." style="height:285px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">` + val.name + `</h5>
+                                        <p class="card-text">` + val.description + `</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">` + val.category_name + `</li>
+                                        <li class="list-group-item">` + val.price + `</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <button class='card-link btn btn-primary m-r-10px select-product-button' data-id='` + val.id + `'>
+                                            <span class='glyphicon glyphicon-ok-circle'></span> Vote Candidate
+                                        </button>
+                                        <button class='card-link btn btn-primary m-r-10px view-product-button' data-id='` + val.id + `'>
+                                            <span class='glyphicon glyphicon-eye-open'></span> View Candidate
+                                        </button>
+                                        
+                                    </div>
+                                    </div>
+                                    </div>`;
+                        }
+
                         
 
+                            
+                        });
+                    
+                        // end table
+                        html+=`</div>`;
+
+                        clearResponse();
+                        
+                        $('#content').html(html);
+                        });
+                    } else {
                         //<!-- start table -->
                         html +=`<div class="row"><h2>Candidates</h2></div><div class="row">`;
-                
-                
-                    // loop through returned list of data
-                    $.each(data.records, function(key, val) {
-                
-                        console.log('status' + result.data.status);
-                        // creating new table row per record
-                        if(result.data.status=='ACCREDITTED' || result.data.status=='VOTED'){
-                         html +=`
-                                    <div class="col-sm-4">
-                                    <div class="card">
-                                        <img src="images/` + val.profile_pic + `" class="card-img-top" alt="..." style="height:285px;">
-                                <div class="card-body">
-                                    <h5 class="card-title">` + val.name + `</h5>
-                                    <p class="card-text">` + val.description + `</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">` + val.category_name + `</li>
-                                    <li class="list-group-item">` + val.price + `</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <button class='card-link btn btn-primary m-r-10px select-product-button' data-id='` + val.id + `'>
-                                        <span class='glyphicon glyphicon-ok-circle'></span> Vote Candidate
-                                    </button>
-                                    <button class='card-link btn btn-primary m-r-10px view-product-button' data-id='` + val.id + `'>
-                                        <span class='glyphicon glyphicon-eye-open'></span> View Candidate
-                                    </button>
-                                    
-                                </div>
-                                </div>
-                                </div>`;
-                    }
-
-                       
-
-                        
-                    });
+                    
                 
                     // end table
-                    html+=`</div>`;
+                    html+=`This Election is currently Closed. Check Back Later. Thank you.</div>`;
 
                     clearResponse();
                     
                     $('#content').html(html);
-                    });
+
+                    }
+
+        });
+
+
                 
                 
                 //console.log(html);
