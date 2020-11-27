@@ -181,7 +181,7 @@
                     
 
                     //<!-- start table -->
-                   var html1 =`<div class="row"><h2>Votes</h2></div><div class="row"><table class="table table-responsive">`;
+                   var html1 =`<div class="row"><h3>Votes</h3></div><div class="row"><table class="table table-responsive">`;
             
             
                 // loop through returned list of data
@@ -198,7 +198,7 @@
                             
                             </tr>`;
                
-                            console.log(val.position);
+                            
                 });
             
                 // end table
@@ -214,6 +214,8 @@
                 // read products button will be here
                 // start html
                 var election_status = data.status;
+                var election_description = data.description;
+                var election_name = data.name;
 
                     if (election_status == 'OPEN') {
                         
@@ -228,7 +230,7 @@
                             
 
                             //<!-- start table -->
-                            html +=`<div class="row"><h2>Candidates</h2></div><div class="row">`;
+                            html +=`<div class="row"><h2>` + election_name + `</h2></div><div class="row"><h3>Candidates</h3></div><div class="row">`;
                     
                     
                         // loop through returned list of data
@@ -277,7 +279,7 @@
                         });
                     } else {
                         //<!-- start table -->
-                        html +=`<div class="row"><h2>Candidates</h2></div><div class="row">`;
+                        html +=`<div class="row"><h2>` + election_name + `</h2></div><div class="row">` + election_description + `</div><div class="row">`;
                     
                 
                     // end table
