@@ -44,7 +44,7 @@ if($num>0){
             "created" => $created
         );
   
-        array_push($messagbes_arr["records"], $message_item);
+        array_push($messages_arr["records"], $message_item);
     }
   
     // set response code - 200 OK
