@@ -22,7 +22,7 @@ function read(){
   
     // select all query
     $query = "SELECT
-                p.fullname, p.subject, p.message, p.created
+                p.id, p.fullname, p.subject, p.message, p.created
             FROM
                 " . $this->table_name . " p
             ORDER BY
