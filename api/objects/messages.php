@@ -26,7 +26,7 @@ function read(){
             FROM
                 " . $this->table_name . " p
             ORDER BY
-                p.date DESC";
+                p.created DESC";
   
     // prepare query statement
     $stmt = $this->conn->prepare($query);
