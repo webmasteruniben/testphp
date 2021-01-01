@@ -39,6 +39,7 @@ if($num>0){
         $message_item=array(
             "id" => $id,
             "fullname" => $fullname,
+            "email" => $email,
             "message" => html_entity_decode($message),
             "subject" => $subject,
             "created" => $created

@@ -8,6 +8,7 @@ class Message{
     // object properties
     public $id;
     public $fullname;
+    public $email;
     public $subject;
     public $message;
     public $created;
@@ -22,7 +23,7 @@ function read(){
   
     // select all query
     $query = "SELECT
-                p.id, p.fullname, p.subject, p.message, p.created
+                p.id, p.fullname, p.email, p.subject, p.message, p.created
             FROM
                 " . $this->table_name . " p
             ORDER BY
@@ -44,19 +45,21 @@ function create(){
     $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                fullname=:fullname, subject=:subject, message=:message, created=:created";
+                fullname=:fullname, email=:email, subject=:subject, message=:message, created=:created";
   
     // prepare query
     $stmt = $this->conn->prepare($query);
   
     // sanitize
     $this->fullname=htmlspecialchars(strip_tags($this->fullname));
+    $this->email=htmlspecialchars(strip_tags($this->email));
     $this->subject=htmlspecialchars(strip_tags($this->subject));
     $this->message=htmlspecialchars(strip_tags($this->message));
     $this->created=htmlspecialchars(strip_tags($this->created));
   
     // bind values
     $stmt->bindParam(":fullname", $this->fullname);
+    $stmt->bindParam(":email", $this->email);
     $stmt->bindParam(":subject", $this->subject);
     $stmt->bindParam(":message", $this->message);
     $stmt->bindParam(":created", $this->created);
@@ -75,7 +78,7 @@ function readOne(){
   
     // query to read single record
     $query = "SELECT
-                p.id, p.fullname, p.subject, p.message, p.created
+                p.id, p.fullname, p.email, p.subject, p.message, p.created
             FROM
                 " . $this->table_name . " p
             WHERE
@@ -97,6 +100,7 @@ function readOne(){
   
     // set values to object properties
     $this->fullname = $row['fullname'];
+    $this->email = $row['email'];
     $this->subject = $row['subject'];
     $this->message = $row['message'];
     $this->created = $row['created'];
@@ -112,6 +116,7 @@ function update(){
                 " . $this->table_name . "
             SET
                 fullname = :fullname,
+                email = :email,
                 subject = :subject,
                 message = :message,
             WHERE
@@ -122,12 +127,14 @@ function update(){
   
     // sanitize
     $this->fullname=htmlspecialchars(strip_tags($this->fullname));
+    $this->email=htmlspecialchars(strip_tags($this->email));
     $this->subject=htmlspecialchars(strip_tags($this->subject));
     $this->message=htmlspecialchars(strip_tags($this->message));
    
   
     // bind new values
     $stmt->bindParam(':fullname', $this->fullname);
+    $stmt->bindParam(':email', $this->email);
     $stmt->bindParam(':subject', $this->subject);
     $stmt->bindParam(':message', $this->message);
     $stmt->bindParam(':id', $this->id);
@@ -168,11 +175,11 @@ function search($keywords){
   
     // select all query
     $query = "SELECT
-                p.id, p.fullname, p.subject, p.message, p.created
+                p.id, p.fullname, p.email, p.subject, p.message, p.created
             FROM
                 " . $this->table_name . " p
             WHERE
-                p.fullname LIKE ? OR p.subject LIKE ? OR c.message LIKE ?
+                p.fullname LIKE ? OR p.subject LIKE ? OR p.message LIKE ?
             ORDER BY
                 p.created DESC";
   
@@ -199,7 +206,7 @@ public function readPaging($from_record_num, $records_per_page){
   
     // select query
     $query = "SELECT
-                p.id, p.fullname, p.subject, p.message, p.created
+                p.id, p.fullname, p.email, p.subject, p.message, p.created
             FROM
                 " . $this->table_name . " p
             ORDER BY p.created DESC

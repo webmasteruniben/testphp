@@ -29,6 +29,7 @@ if(
   
     // set product property values
     $message->fullname = $data->fullname;
+    $message->email = $data->email;
     $message->subject = $data->subject;
     $message->message = $data->message;
     $message->created = date('Y-m-d H:i:s');
