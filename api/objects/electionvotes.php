@@ -229,9 +229,9 @@ class Electionvote{
 
     // select all query
     $query = "SELECT
-        COUNT(number) AS votedvoters
+        COUNT(DISTINCT(number)) AS votedvoters
         FROM
-        voters
+        electionvotes
         WHERE
             status = 'VOTED'";
 
