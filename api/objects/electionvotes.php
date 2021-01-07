@@ -176,6 +176,81 @@ class Electionvote{
     
     }
 
+     // used when filling up the update product form
+     function countAccredited(){
+    
+        //$this->category_id = 19;
+
+    // select all query
+    $query = "SELECT
+        COUNT(number) AS accreditedvoters
+        FROM
+        voters
+        WHERE
+            status = 'ACCREDITTED' 
+        AND
+        product_id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    
+    }
+
+    // used when filling up the update product form
+    function countNotAccredited(){
+    
+        //$this->category_id = 19;
+
+    // select all query
+    $query = "SELECT
+        COUNT(number) AS notaccreditedvoters
+        FROM
+        voters
+        WHERE
+            status = 'NOT ACCREDITTED' 
+        AND
+        product_id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    
+    }
+
+     // used when filling up the update product form
+     function countVoted(){
+    
+        //$this->category_id = 19;
+
+    // select all query
+    $query = "SELECT
+        COUNT(number) AS votedvoters
+        FROM
+        voters
+        WHERE
+            status = 'VOTED' 
+        AND
+        product_id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    
+    }
+
     function readVotes(){
      //select all data
      $query = "SELECT
