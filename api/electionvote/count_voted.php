@@ -19,7 +19,7 @@ $db = $database->getConnection();
   
 // initialize object
 $electionvote = new Electionvote($db);
-//$electionvote->category_id = isset($_GET['id']) ? $_GET['id'] : die();
+$electionvote->category_id = isset($_GET['id']) ? $_GET['id'] : die();
 // read products will be here
 // query products
 $stmt = $electionvote->countVoted();
@@ -42,7 +42,9 @@ if($num>0){
         extract($row);
   
         $electionvote_item=array(
-            "votedvoters" => $votedvoters
+            "votes" => $votes,
+            "category_id" => $category_id,
+            "election" => $election
         );
   
         array_push($electionvotes_arr["records"], $electionvote_item);

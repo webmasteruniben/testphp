@@ -229,11 +229,14 @@ class Electionvote{
 
     // select all query
     $query = "SELECT
-        COUNT(number) AS votedvoters
-        FROM
-        electionvotes
-        GROUP BY
-            number";
+    COUNT(number) AS votes, e.category_id, c.name AS election
+    FROM
+    " . $this->table_name . " e
+    JOIN
+    categories c
+            ON c.id=e.category_id
+    WHERE
+        e.category_id = " . $this->category_id;
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
