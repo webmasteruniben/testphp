@@ -38,6 +38,8 @@ $(document).ready(function(){
                         <td><select name='price' class='form-control' style='height:40px'>
                             <option value='President'>President</option>
                             <option value='Vice-President'>Vice-President</option>
+                            <option value='Best-Dressed-Staff'>Best-Dressed-Staff</option>
+                            <option value='Most-Punctual-Staff'>Most-Punctual-Staff</option>
                             <option value='Dean'>Dean</option>
                         </select></td>
                     </tr>
