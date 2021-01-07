@@ -229,11 +229,13 @@ class Electionvote{
 
     // select all query
     $query = "SELECT
-        COUNT(DISTINCT(number)) AS votedvoters
+        COUNT(number) AS votedvoters
         FROM
         electionvotes
         WHERE
-            status = 'VOTED'";
+            status = 'VOTED'
+        GROUP BY
+            number";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
