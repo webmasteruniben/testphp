@@ -232,8 +232,6 @@ class Electionvote{
         COUNT(number) AS votedvoters
         FROM
         electionvotes
-        WHERE
-            status = 'VOTED'
         GROUP BY
             number";
 
