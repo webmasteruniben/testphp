@@ -233,9 +233,7 @@ class Electionvote{
         FROM
         voters
         WHERE
-            status = 'VOTED' 
-        AND
-        product_id";
+            status = 'VOTED'";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
