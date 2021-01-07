@@ -187,9 +187,7 @@ class Electionvote{
         FROM
         voters
         WHERE
-            status = 'ACCREDITTED' 
-        AND
-        product_id";
+            status = 'ACCREDITTED'";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
