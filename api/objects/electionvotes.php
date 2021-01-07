@@ -222,6 +222,30 @@ class Electionvote{
     
     }
 
+
+    // used when filling up the update product form
+    function countAllVotes(){
+    
+        //$this->category_id = 19;
+
+    // select all query
+    $query = "SELECT
+        COUNT(number) AS totalvoters
+        FROM
+        voters";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    
+    }
+
+    
+
      // used when filling up the update product form
      function countVoted(){
     
