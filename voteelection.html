@@ -172,7 +172,7 @@
                 var splitelection = select_election.split('[');
                 var splitelectionid = splitelection[1].split(']');
                 var electionid = splitelectionid[0];
-                console.log(electionid);
+               
 
                 var person_name = ' ';
 
@@ -182,12 +182,12 @@
                     
 
                 person_name +=  data.name + ' for ' + data.price;
-
+                console.log(electionid,result.data.number,data.id);
                 
                 console.log('candidate ' + person_name)
 
                 bootbox.confirm({
-                    message: "<h4>Click <span style='color:Red;'>Yes</span> to Confirm" + person_name + "<br><br> Click style='color:Blue;'>No</span> to Go Back</h4>",
+                    message: "<h4>Click <span style='color:Red;'>Yes</span> to Confirm" + person_name + "</h4><h6> Click <style='color:Blue;'>No</span> to Go Back</h6>",
                         buttons: {
                             confirm: {
                                 label: '<span class="glyphicon glyphicon-ok"></span> Yes',
@@ -206,8 +206,8 @@
                                 $.ajax({
                                 url: "https://testphp.uniben.edu/api/electionvote/create.php",
                                 type : "POST",
-                                contentType : 'application/json',
-                                data : form_data,
+                                dataType : 'json',
+                                data : JSON.stringify({"category_id":electionid,"number":result.data.number,"product_id":data.id}),
                                 success : function(result) {
                                     // if response is a success, tell the user it was a successful sign up & empty the input boxes
                                     $('#response').html("<div class='alert alert-success'>Your Vote has been recorded successfully.</div>");
