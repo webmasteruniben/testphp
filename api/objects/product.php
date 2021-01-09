@@ -71,6 +71,7 @@ function create(){
     $stmt->bindParam(":price", $this->price);
     $stmt->bindParam(":description", $this->description);
     $stmt->bindParam(":category_id", $this->category_id);
+    $stmt->bindParam(":username", $this->username);
     $stmt->bindParam(":created", $this->created);
 
     // hash the password before saving to database
