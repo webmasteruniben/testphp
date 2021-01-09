@@ -55,6 +55,18 @@ $(document).ready(function(){
                         <td>Election</td>
                         <td>` + categories_options_html + `</td>
                     </tr>
+
+                    <!-- username field -->
+                    <tr>
+                        <td>Username</td>
+                        <td><input type='text' name='username' class='form-control' required /></td>
+                    </tr>
+
+                    <!-- password field -->
+                    <tr>
+                        <td>Password</td>
+                        <td><input type='password' name='password' class='form-control' required /></td>
+                    </tr>
             
                     <!-- button to submit form -->
                     <tr>

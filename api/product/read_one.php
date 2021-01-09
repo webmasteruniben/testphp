@@ -32,6 +32,7 @@ if($product->name!=null){
         "price" => $product->price,
         "profile_pic" => $product->profile_pic,
         "category_id" => $product->category_id,
+        "username" => $product->username,
         "category_name" => $product->category_name
   
     );

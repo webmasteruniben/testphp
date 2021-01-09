@@ -33,6 +33,8 @@ if(
     $product->price = $data->price;
     $product->description = $data->description;
     $product->category_id = $data->category_id;
+    $product->username = $data->username;
+    $product->password = $data->password;
     $product->created = date('Y-m-d H:i:s');
   
     // create the product

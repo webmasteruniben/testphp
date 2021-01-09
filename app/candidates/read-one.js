@@ -48,6 +48,12 @@ $(document).ready(function(){
                         <td>Category</td>
                         <td>` + data.category_name + `</td>
                     </tr>
+
+                    <!-- product user name -->
+                    <tr>
+                        <td>Username</td>
+                        <td>` + data.username + `</td>
+                    </tr>
                 
                 </table>`;
 

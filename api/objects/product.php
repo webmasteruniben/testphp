@@ -13,6 +13,8 @@ class Product{
     public $profile_pic;
     public $category_id;
     public $category_name;
+    public $username;
+    public $password;
     public $created;
   
     // constructor with $db as database connection
@@ -25,7 +27,7 @@ function read(){
   
     // select all query
     $query = "SELECT
-                c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+                c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.username, p.created
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
@@ -50,7 +52,7 @@ function create(){
     $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
+                name=:name, price=:price, description=:description, category_id=:category_id, username = :username password = :password, created=:created";
   
     // prepare query
     $stmt = $this->conn->prepare($query);
@@ -60,6 +62,8 @@ function create(){
     $this->price=htmlspecialchars(strip_tags($this->price));
     $this->description=htmlspecialchars(strip_tags($this->description));
     $this->category_id=htmlspecialchars(strip_tags($this->category_id));
+    $this->username=htmlspecialchars(strip_tags($this->username));
+    $this->password=htmlspecialchars(strip_tags($this->password));
     $this->created=htmlspecialchars(strip_tags($this->created));
   
     // bind values
@@ -68,6 +72,10 @@ function create(){
     $stmt->bindParam(":description", $this->description);
     $stmt->bindParam(":category_id", $this->category_id);
     $stmt->bindParam(":created", $this->created);
+
+    // hash the password before saving to database
+    $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+    $stmt->bindParam(':password', $password_hash);
   
     // execute query
     if($stmt->execute()){
@@ -83,7 +91,7 @@ function readOne(){
   
     // query to read single record
     $query = "SELECT
-                c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic, p.category_id, p.created
+                c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic, p.category_id, p.username, p.created
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
@@ -112,6 +120,7 @@ function readOne(){
     $this->profile_pic = $row['profile_pic'];
     $this->description = $row['description'];
     $this->category_id = $row['category_id'];
+    $this->category_id = $row['username'];
     $this->category_name = $row['category_name'];
 }
 
@@ -122,7 +131,7 @@ function readOneByElection(){
 
    // select all query
    $query = "SELECT
-    c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic as profile_pic, p.category_id, p.created
+    c.name as category_name, p.id, p.name, p.description, p.price, p.profile_pic as profile_pic, p.category_id, p.username, p.created
     FROM
     " . $this->table_name . " p
     LEFT JOIN
@@ -143,8 +152,59 @@ function readOneByElection(){
    
 }
 
+// emailExists() method will be here
+// check if given email exist in the database
+function usernameExists(){
+ 
+    // query to check if email exists
+    $query = "SELECT id, name, description, price, profile_pic,category_id, password
+            FROM " . $this->table_name . "
+            WHERE username = ?
+            LIMIT 0,1";
+ 
+    // prepare the query
+    $stmt = $this->conn->prepare( $query );
+ 
+    // sanitize
+    $this->username=htmlspecialchars(strip_tags($this->username));
+ 
+    // bind given email value
+    $stmt->bindParam(1, $this->username);
+ 
+    // execute the query
+    $stmt->execute();
+ 
+    // get number of rows
+    $num = $stmt->rowCount();
+ 
+    // if email exists, assign values to object properties for easy access and use for php sessions
+    if($num>0){
+ 
+        // get record details / values
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+ 
+        // assign values to object properties
+        $this->id = $row['id'];
+        $this->name = $row['name'];
+        $this->description = $row['description'];
+        $this->price = $row['price'];
+        $this->profile_pic = $row['profile_pic'];
+        $this->category_id = $row['category_id'];
+        $this->password = $row['password'];
+ 
+        // return true because email exists in the database
+        return true;
+    }
+ 
+    // return false if email does not exist in the database
+    return false;
+}
+
 // update the product
 function update(){
+
+     // if password needs to be updated
+     $password_set=!empty($this->password) ? ", password = :password" : "";
   
     // update query
     $query = "UPDATE
@@ -153,7 +213,9 @@ function update(){
                 name = :name,
                 price = :price,
                 description = :description,
-                category_id = :category_id
+                category_id = :category_id,
+                username = :username
+                {$password_set}
             WHERE
                 id = :id";
   
@@ -165,6 +227,7 @@ function update(){
     $this->price=htmlspecialchars(strip_tags($this->price));
     $this->description=htmlspecialchars(strip_tags($this->description));
     $this->category_id=htmlspecialchars(strip_tags($this->category_id));
+    $this->username=htmlspecialchars(strip_tags($this->username));
     $this->id=htmlspecialchars(strip_tags($this->id));
   
     // bind new values
@@ -173,6 +236,15 @@ function update(){
     $stmt->bindParam(':description', $this->description);
     $stmt->bindParam(':category_id', $this->category_id);
     $stmt->bindParam(':id', $this->id);
+
+   // hash the password before saving to database
+   if(!empty($this->password)){
+    $this->password=htmlspecialchars(strip_tags($this->password));
+    $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+    $stmt->bindParam(':password', $password_hash);
+}
+
+    
   
     // execute the query
     if($stmt->execute()){
@@ -210,7 +282,7 @@ function search($keywords){
   
     // select all query
     $query = "SELECT
-                c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+                c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.username, p.created
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN
@@ -244,7 +316,7 @@ public function readPaging($from_record_num, $records_per_page){
   
     // select query
     $query = "SELECT
-                c.name as category_name, p.id, p.name, p.profile_pic, p.description, p.price, p.category_id, p.created
+                c.name as category_name, p.id, p.name, p.profile_pic, p.description, p.price, p.category_id, p.username, p.created
             FROM
                 " . $this->table_name . " p
                 LEFT JOIN

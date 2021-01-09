@@ -28,6 +28,8 @@ $product->name = $data->name;
 $product->price = $data->price;
 $product->description = $data->description;
 $product->category_id = $data->category_id;
+$product->username = $data->username;
+$product->password = $data->password;
   
 // update the product
 if($product->update()){

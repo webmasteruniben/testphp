@@ -45,6 +45,7 @@ function readProductsTemplate(data, keywords){
             <td>` + val.name + `</td>
             <td>` + val.price + `</td>
             <td>` + val.category_name + `</td>
+            <td>` + val.username + `</td>
  
             <!-- 'action' buttons -->
             <td>

@@ -47,6 +47,7 @@ if($num>0){
             "price" => $price,
             "profile_pic" => $profile_pic,
             "category_id" => $category_id,
+            "username" => $username,
             "category_name" => $category_name
         );
   

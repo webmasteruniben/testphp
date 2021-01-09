@@ -30,7 +30,7 @@ if($product->delete()){
     http_response_code(200);
   
     // tell the user
-    echo json_encode(array("message" => "Product was deleted."));
+    echo json_encode(array("message" => "Candidate was deleted."));
 }
   
 // if unable to delete the product
