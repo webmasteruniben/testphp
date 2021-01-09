@@ -235,6 +235,7 @@ function update(){
     $stmt->bindParam(':price', $this->price);
     $stmt->bindParam(':description', $this->description);
     $stmt->bindParam(':category_id', $this->category_id);
+    $stmt->bindParam(':username', $this->username);
     $stmt->bindParam(':id', $this->id);
 
    // hash the password before saving to database
