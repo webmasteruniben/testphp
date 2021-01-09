@@ -52,7 +52,7 @@ function create(){
     $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                name=:name, price=:price, description=:description, category_id=:category_id, username = :username password = :password, created=:created";
+                name=:name, price=:price, description=:description, category_id=:category_id, username =:username, password =:password, created=:created";
   
     // prepare query
     $stmt = $this->conn->prepare($query);
