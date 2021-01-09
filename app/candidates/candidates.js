@@ -31,6 +31,7 @@ function readProductsTemplate(data, keywords){
                 <th class='w-25-pct'>Name</th>
                 <th class='w-10-pct'>Position</th>
                 <th class='w-15-pct'>Category</th>
+                <th class='w-15-pct'>Username</th>
                 <th class='w-25-pct text-align-center'>Action</th>
             </tr>`;
  

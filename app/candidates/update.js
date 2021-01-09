@@ -76,13 +76,13 @@ $(document).ready(function(){
                             <!-- username field -->
                             <tr>
                                 <td>Username</td>
-                                <td><input type='text' name='username' class='form-control' required /></td>
+                                <td><input  value=\"` + username + `\" type='text' name='username' class='form-control' required /></td>
                             </tr>
 
                             <!-- password field -->
                             <tr>
                                 <td>Password</td>
-                                <td><input type='password' name='password' class='form-control' required /></td>
+                                <td><input type='password' name='password' class='form-control' /></td>
                             </tr>
                     
                             <tr>
