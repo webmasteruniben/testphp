@@ -91,6 +91,7 @@ $(document).ready(function(){
             // chage page title
             changePageTitle("Create Candidate");
         });
+        });
     });
  
     // 'create product form' handle will be here
