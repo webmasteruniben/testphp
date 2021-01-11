@@ -42,7 +42,7 @@ $(document).ready(function(){
                     
                             $.each(data.records, function(key, val){
                                 // pre-select option is category id is the same
-                                if(val.position==position){ positions_options_html+=`<option value='` + val.position + `' selected>` + val.position + `</option>`; }
+                                if(val.position==price){ positions_options_html+=`<option value='` + val.position + `' selected>` + val.position + `</option>`; }
                     
                                 else{ positions_options_html+=`<option value='` + val.position + `'>` + val.position + `</option>`; }
                             });
