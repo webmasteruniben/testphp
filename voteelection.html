@@ -185,6 +185,7 @@
                 console.log(electionid,result.data.number,data.id);
                 var person_number = result.data.number;
                 var person_id = data.id;
+                var person_position = data.price;
                 
                 console.log('candidate ' + person_name)
 
@@ -210,7 +211,7 @@
                                 url: "https://testphp.uniben.edu/api/electionvote/create.php",
                                 type : "POST",
                                 dataType : 'json',
-                                data : JSON.stringify({"category_id":electionid,"number":person_number,"product_id":person_id}),
+                                data : JSON.stringify({"category_id":electionid,"number":person_number,"product_id":person_id, "position":person_position}),
                                 success : function(result) {
                                     // if response is a success, tell the user it was a successful sign up & empty the input boxes
                                     $('#response').html("<div class='alert alert-success'>Your Vote has been recorded successfully.</div>");
