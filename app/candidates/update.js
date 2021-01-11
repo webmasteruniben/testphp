@@ -32,6 +32,16 @@ $(document).ready(function(){
                         else{ categories_options_html+=`<option value='` + val.id + `'>` + val.name + `</option>`; }
                     });
                     categories_options_html+=`</select>`;
+
+                    //load the positions
+                    $.getJSON("https://testphp.uniben.edu/api/position/read.php", function(data){
+                        // build categories option html
+                    // loop through returned list of data
+                    var position_options_html=`<select name='price' class='form-control' style='height:40px'>`;
+                    $.each(data.records, function(key, val){
+                        position_options_html+=`<option value='` + val.position + `'>` + val.position + `</option>`;
+                    });
+                    position_options_html+=`</select>`;
                 
                 // update product html will be here
                 // store 'update product' html to this variable
@@ -53,13 +63,7 @@ $(document).ready(function(){
                             <!-- price field -->
                             <tr>
                                 <td>Position</td>
-                                <td><select name='price' class='form-control' style='height:40px'>
-                                    <option value='President'>President</option>
-                                    <option value='Vice-President'>Vice-President</option>
-                                    <option value='Best-Dressed-Staff'>Best-Dressed-Staff</option>
-                                    <option value='Most-Punctual-Staff'>Most-Punctual-Staff</option>
-                                    <option value='Dean'>Dean</option>
-                                </select></td>
+                                <td>` + position_options_html + `</td>
                             </tr>
                     
                             <!-- description field -->
