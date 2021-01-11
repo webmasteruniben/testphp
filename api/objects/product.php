@@ -121,7 +121,7 @@ function readOne(){
     $this->profile_pic = $row['profile_pic'];
     $this->description = $row['description'];
     $this->category_id = $row['category_id'];
-    $this->category_id = $row['username'];
+    $this->username = $row['username'];
     $this->category_name = $row['category_name'];
 }
 

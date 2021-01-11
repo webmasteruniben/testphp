@@ -15,6 +15,7 @@ $(document).ready(function(){
             var description = data.description;
             var category_id = data.category_id;
             var category_name = data.category_name;
+            var username = data.username;
             
             // load list of categories will be here
             // load list of categories
