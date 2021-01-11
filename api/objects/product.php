@@ -84,7 +84,7 @@ function create(){
     }
   
     return false;
-      
+    
 }
 
 // used when filling up the update product form
@@ -141,7 +141,7 @@ function readOneByElection(){
     WHERE
         p.category_id = " . $this->category_id . "
     ORDER BY
-    p.created DESC";
+    p.price DESC";
 
     // prepare query statement
     $stmt = $this->conn->prepare($query);
