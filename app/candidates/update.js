@@ -112,6 +112,7 @@ $(document).ready(function(){
                     // chage page title
                     changePageTitle("Update Candidate");
             });
+            });
         });
     });
      
