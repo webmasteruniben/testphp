@@ -32,6 +32,7 @@
             <a class="nav-item nav-link" href="elections.html" id='elections'>Elections</a>
             <a class="nav-item nav-link" href="candidates.html" id='candidates'>Candidates</a>
             <a class="nav-item nav-link" href="voters.html" id='voters'>Voters</a>
+            <a class="nav-item nav-link" href="position.html" id='position'>Positions</a>
             <a class="nav-item nav-link" href="#" id='logout'>Logout</a>
             <a class="nav-item nav-link" href="#" id='login'>Login</a>
             <a class="nav-item nav-link" href="#" id='sign_up'>Register User</a>
@@ -76,11 +77,11 @@
         var jwt = getCookie('jwt');
         $.post("api/user/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
             $("#login").hide();
-            $("#logout, #elections, #candidates, #voters, #sign_up").show();
+            $("#logout, #elections, #candidates, #voters, #sign_up, #position").show();
         })
         .fail(function(result){
             $("#login").show();
-            $("#logout, #elections, #candidates, #voters, #sign_up").hide();
+            $("#logout, #elections, #candidates, #voters, #sign_up, #position").hide();
         });
 
 

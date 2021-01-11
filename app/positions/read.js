@@ -21,7 +21,7 @@ $(document).ready(function(){
 });
  
 function showProductsFirstPage(){
-    var json_url="https://testphp.uniben.edu/api/position/read_paging.php";
+    var json_url="https://testphp.uniben.edu/api/position/read.php";
     showProducts(json_url);
 }
  
